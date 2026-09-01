@@ -427,3 +427,9 @@ To test whether MadGraph is working run in the terminal to launch MadGraph inter
 ```sh
 mg5_aMC
 ```
+
+If you already have MadGraph installed, try to pull the latest version by heading to the $PACKAGE_PATH/mg5amcnlo and running
+
+```sh
+git pull
+```

@@ -3,7 +3,7 @@
 - [Overview](#overview)
 - [Requirements](#requirements)
 - [Analytic calculation](#analytic-calculation)
-- [Installation](#installation)
+- [Installation of PDF sets](#installation-of-pdf-sets)
 - [How to use](#how-to-use)
     - [PYTHIA8+FASTJET](#pythia8+fastjet)
     - [HERWIG7+FASTJET](#herwig7+fastjet)
@@ -32,29 +32,7 @@ This is a simple projects of a course that helps students in particle physics to
 
 ROOT6, LHAPDF6, PYTHIA8, and FASTJET3 have to be compiled with python3 if you want to use them in python interface. For more information see [Installation tutorial](../INSTALLATION_TUTORIAL.md).
 
-# Installation
-
-```sh
-git clone https://github.com/Sergeyir/genjets-course --depth=1
-```
-
-Install all requirements and configure environment variables described in [Installation tutorial](../INSTALLATION_TUTORIAL.md)
-
-Python environment should work fine after the last step. If you need to use C++ for this project run
-
-```sh
-cmake .
-make -j
-```
-
-To update the repository to the newest version run in its root
-
-```sh
-git pull
-```
-
-<details>
-<summary> Installing PDF sets</summary>
+# Installation of PDF sets
 
 You can install the needed pdf set with lhapdf command (if you installed it with python):
 
@@ -65,18 +43,6 @@ lhapdf install name_of_pdf_set
 Or by installing it in .tar.gz format from https://www.lhapdf.org/pdfsets.html and extracting it into $LHAPDF_PATH/share/LHAPDF directory.
 
 In the current repository example NNPDF31_lo_as_0118 and NNPDF31_lo_as_0118 pdf sets are used, so install them as well to test if the code works fine.
-</details>
-
-<details>
-<summary> Implementing your changes</summary>
-
-Since the project may be updated you may need to pull the changes. This way implementing your changes to the code may cause conflict in git version. To circumvent this you can create a branch of this repo or just copy the contents of this repository to your directory and remove CMake files and cache:
-
-```sh
-rm -r CMakeFiles cmake_install.cmake CMakeCache.txt
-```
-
-</details>
 
 # Code examples and how to use them
 

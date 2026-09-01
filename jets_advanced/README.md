@@ -7,7 +7,6 @@
 - [How to use](#how-to-use)
     - [Generating with pythia8](#generating-with-pythia8)
     - [Running analytic calculation](#running-analytic-calculation)
-- [Using this project for teaching](#using-this-project-for-teaching)
 - [Sources](#sources)
 
 # Overview
@@ -29,7 +28,7 @@ This is a simple projects that helps students in particle physics to study hard 
 - [FASTJET3](https://fastjet.fr/) 
 - [PyYAML](https://pypi.org/project/PyYAML/) if you intend to use python3 code (can be installed with pip or with package manager - python3-yaml)
 
-ROOT6, LHAPDF6, PYTHIA8, and FASTJET3 have to be compiled with python3 for the python interface. For more information see [Installation tutorial](INSTALLATION_TUTORIAL.md).
+ROOT6, LHAPDF6, PYTHIA8, and FASTJET3 have to be compiled with python3 for the python interface. For more information see [Installation tutorial](../INSTALLATION_TUTORIAL.md).
 
 # Analytic calculation
 
@@ -61,7 +60,7 @@ The formulas for the needed cross section can be obtained with kinematic equatio
 git clone https://github.com/Sergeyir/HardProcessesLO --depth=1 --recurse-submodules
 ```
 
-Install all requirements and configure environment variables described in [Installation tutorial](INSTALLATION_TUTORIAL.md)
+Install all requirements and configure environment variables described in [Installation tutorial](../INSTALLATION_TUTORIAL.md)
 
 Python environment should work fine after the last step. If you need to use C++ for this project run
 
@@ -153,12 +152,6 @@ python scripts/calcylate_analytic.py -i input/pp7TeV.yaml -n 100
 
 Where the "-i" argument provides the name of the file with all important specifications, and "-n" provides the number of integration steps for Monte Carlo integration.
 </details>
-
-# Using this project for teaching
-
-This is an open source public project which anyone can use. If you are teaching students programming/software in particle physics and would like to incorporate this project or a part of it, you can reach me at [antsupov0124@gmail.com](mailto:antsupov0124@gmail.com) so that I can send you a complete version of this repository. Complete version contains fully finished code which can be used to check the results obtained by students. Please do send the request from you university email address while stating the position, department, and university, so it would be easier for me to confirm your status.
-
-Also this project by itself is not enough for someone to learn the underlying physics, programming, and HEP software. Supervision and assistance is required for students to have a fullest grasp of the subject and experience development.
 
 # Sources
 
