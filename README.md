@@ -7,7 +7,7 @@ This repository contains my courses in HEP software packages and programming. Co
 You can clone this repository in the desired location by running
 
 ```sh
-git clone https://github.com/Sergeyir/hepmc-courses --depth=1
+git clone https://github.com/Sergeyir/hep-courses --depth=1
 ```
 
 After heading into the directory of a desired project you can either use C++ and/or python. The code for C++ is located in src and include directories and can be compiled by first generating Makefile with CMake and then running make:

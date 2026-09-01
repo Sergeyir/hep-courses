@@ -1,0 +1,6 @@
+[submodule "yaml-cpp"]
+	path = yaml-cpp
+	url = https://github.com/jbeder/yaml-cpp
+[submodule "jets_advanced/yaml-cpp"]
+	path = jets_advanced/yaml-cpp
+	url = https://github.com/jbeder/yaml-cpp

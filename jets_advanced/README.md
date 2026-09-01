@@ -11,7 +11,7 @@
 
 # Overview
 
-This is a simple projects that helps students in particle physics to study hard processes in p+p collisions at high energy and to learn high energy physics software. The goal is for the students to perform a numerical calculation of $d \sigma/dp_{T}$ and $d \sigma / d \Delta y$ of partons that originate from LO and NLO hard processes. The calculation is performed in 3 different ways: 
+This is a simple projects that helps students in particle physics to study hard processes in p+p collisions at high energy and to learn high energy physics software. The goal is for the students to perform a numerical calculation of $d \sigma/dp_{T}$ and $d \sigma / d \Delta y$ of partons/jets that originate from LO and NLO hard processes. The calculation is performed in 4 different ways: 
 
 - **Analytic**: calculation via the factorization formula for LO hard p+p collision
 - **PYTHIA8**: estimation of cross section from PYTHIA8 outgoint parton data

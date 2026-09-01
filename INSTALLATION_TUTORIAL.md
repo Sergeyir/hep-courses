@@ -296,7 +296,7 @@ First I recommend first heading into $PACKAGE_PATH directory and then you clone 
 
 
 ```sh
-git clone https://gitlab.cern.ch/hepmc/HepMC3 --depth=1
+git clone https://gitlab.cern.ch/hepmc/HepMC3 --depth=1 --recurse-submodules
 ```
 
 Then head into HepMC3 directory and run cmake to generate a Makefile

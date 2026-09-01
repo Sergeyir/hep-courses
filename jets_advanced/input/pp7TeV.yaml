@@ -1,0 +1,7 @@
+# This file contains all information for generation and analytic calculation
+---
+energy: 7000 # energy of colliding nuclei in center of mass frame [GeV]
+pdfset: "NNPDF31_lo_as_0118" # pdf set
+pthatmin: 25 # phase space cut on minimum pT for hard processes [GeV/c]
+abs_max_y: 4.7 # cut on absolute value of rapidity
+fastjet_r: 0.4 # fastjet R (radius) parameter for the jet definition
