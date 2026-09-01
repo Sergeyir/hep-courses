@@ -30,7 +30,7 @@ This is a simple projects of a course that helps students in particle physics to
 - [HERWIG7](https://herwig.hepforge.org/) 
 - [POWHEGBOX](https://powhegbox.mib.infn.it/) 
 
-ROOT6, LHAPDF6, PYTHIA8, and FASTJET3 have to be compiled with python3 if you want to use them in python interface. For more information see [Installation tutorial](INSTALLATION_TUTORIAL.md).
+ROOT6, LHAPDF6, PYTHIA8, and FASTJET3 have to be compiled with python3 if you want to use them in python interface. For more information see [Installation tutorial](../INSTALLATION_TUTORIAL.md).
 
 # Installation
 
@@ -38,7 +38,7 @@ ROOT6, LHAPDF6, PYTHIA8, and FASTJET3 have to be compiled with python3 if you wa
 git clone https://github.com/Sergeyir/genjets-course --depth=1
 ```
 
-Install all requirements and configure environment variables described in [Installation tutorial](INSTALLATION_TUTORIAL.md)
+Install all requirements and configure environment variables described in [Installation tutorial](../INSTALLATION_TUTORIAL.md)
 
 Python environment should work fine after the last step. If you need to use C++ for this project run
 
