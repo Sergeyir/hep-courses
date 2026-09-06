@@ -3,17 +3,18 @@
 - [Overview](#overview)
 - [Required packages](#required_packages)
 - [Task guide](#task_guide)
-- [Installation](#installation)
-- [How to use](#how-to-use)
-    - [Generating with pythia8](#generating-with-pythia8)
-    - [Running analytic calculation](#running-analytic-calculation)
+    - [Transforming differential cross sections](#transforming_differential_cross_sections)
+    - [PYTHIA8 LO](#pythia8_lo)
+    - [PYTHIA8+FASTJET3 LO](#pythia8+fastjet3_lo)
+    - [Analytic LO](#analytic_lo)
+    - [MadGraph NLO](#madgraph_nlo)
 - [Sources](#sources)
 
 # Overview
 
 This is a simple projects that helps students in particle physics to study hard processes and jets in p+p collisions at high energy and to learn high energy physics software. The goal is for the students to perform a numerical calculation of $d \sigma/d p_T$ of partons/jets that originate from LO and NLO hard processes. The calculation is performed in 4 different ways:
 
-- **PYTHIA8 LO**: estimation of LO cross section from PYTHIA8 outgoint parton data
+- **PYTHIA8 LO**: estimation of LO cross section from PYTHIA8 outgoing parton data
 - **PYTHIA8+FASTJET3 LO**: estimation of LO cross section via reconstruction of jets with FASTJET3 from PYTHIA8 final state particles
 - **Analytic LO**: calculation via the factorization formula for LO hard p+p collision
 - **MadGraph NLO**: calculation of NLO cross sections in MadGraph with NLO enabled
@@ -63,9 +64,9 @@ It is recommended to save the calculated cross sections in .root files, so that 
 
 There are 3 assignment options for $s_{\sqrt{NN}}$
 
-1. 2.36 TeV
-2. 7 TeV
-3. 13.6 TeV
+1. $s_{\sqrt{NN}} = 2.36 TeV, $\hat{p}_T^{min} = 15$ GeV
+2. $s_{\sqrt{NN}} = 7$ TeV, $\hat{p}_T^{min} = 25$ GeV
+3. $s_{\sqrt{NN}} = 13.6$ TeV, $\hat{p}_T^{min} = 25$ GeV
 
 6 assignment options for PDF sets (LO and NLO respectively):
 
@@ -114,7 +115,7 @@ To run C++ code use compiled binaries in bin directory after compilation, while 
 <details>
 <summary>How to run C++ executable</summary>
 
-Run the compiled executable of a simple example to generate 1000 events with pythia using pythia specification from file input/pp7TeV.yaml as an example. You can change input file and number of events if needed
+Run the compiled executable of a simple example to generate 1000 events with pythia using configuration from file input/pp7TeV.yaml as an example. You can change input file and number of events if needed
 
 ```sh
 bin/RunPythia input/pp7TeV.yaml 1000
@@ -240,4 +241,4 @@ Instructions will appear soon
 # Sources
 
 1. [Michelangelo L. Mangano "Introduction to QCD"](https://cds.cern.ch/record/454171/files/p53.pdf)
-2. [S. Navas et al. (Particle Data Group), Phys. Rev. D 110, 030001 (2024) and 2025 update](https://pdg.lbl.gov/2025/reviews/contents_sports.html)
+2. [F. Takahashi et al. (Particle Data Group), Int. J. Mod. Phys. A 41 , 2630011 (2026)](https://pdg.lbl.gov/2026/reviews/contents_sports.html)
