@@ -280,7 +280,7 @@ With succesfull intallation you would get the pi number without any errors
 
 ## HepMC
 
-First find the package for your distribution containing VDT library (can be cern-vdt, libvdt-dev) and install it. This library is a requirement for HepMC. 
+First find the package for your distribution containing VDT library (can be cern-vdt, libvdt-dev) and install it via package manager. This library is a requirement for HepMC. 
 
 <details>
 <summary> Intalling via package manager </summary>
