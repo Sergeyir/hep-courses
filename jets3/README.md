@@ -46,7 +46,8 @@ CMakeLists.txt and rootlogon.C are already configured for yaml-cpp, but you need
 ```sh
 cmake . && make -j
 ```
-<\details>
+
+</details>
 
 # Task guide
 
@@ -82,7 +83,7 @@ If your task number is 321 then your option is $s_{\sqrt{NN}} = 13.6$ TeV, NNPDF
 
 Install the needed pdf sets. Edit the configuration of .yaml file in input for your assignment option.
 
-<\details>
+</details>
 
 ## Transforming differential cross sections
 
@@ -196,11 +197,11 @@ Lower details for $d \sigma / d \hat{t}$ are described. Similarly, $d \sigma / d
 
 ### Preparing the code:
 
-1. Convert $d\sigma / d \Omega$ to $d \sigma / d \hat{t}$ and obtain obtain Eq.2 from Eq.51.42 [2](#sources)
+1. Convert $d\sigma / d \hat{t}$ to $d \sigma / d \Omega$ and obtain obtain Eq.2 from Eq.51.42 in [2](#sources)
 2. Create LHAPDF::PDF object, invoke LHAPDF::PDF::mkPDF for this object while passing the pdf, and use it later to obtain $\alpha_{S}$ and $x f(x, \mu_{F})$ values)
 3. Declare and/or define a function that returns $x_1$ and $x_2$ for the given $p_T$, $\sqrt{s_{NN}}$, $y_1$, and $y_2$
 4. Deduce the formulas to calculate $\hat{s}$, $\hat{t}$, $\hat{u}$
-5. Declare and/or define a function to calculate $d \sigma / d \hat{t}$ for each 2->2 hard interaction ([2](#sources) (Eq. 51.4 - 51.12)) for the given $\hat{s}$, $\hat{t}$, and $\hat{u}$
+5. Declare and/or define a function to calculate $d \sigma / d \Omega$ for each 2->2 hard interaction ([2](#sources) (Eq. 51.4 - 51.12)) for the given $\hat{s}$, $\hat{t}$, and $\hat{u}$
 
 ### MC unweighted integration:
 
