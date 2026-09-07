@@ -89,7 +89,7 @@ root --version
 or alternatively in python
 
 ```py
-import root
+import ROOT
 print(ROOT.gROOT.GetVersion())
 ```
 
