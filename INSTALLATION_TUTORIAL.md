@@ -11,7 +11,7 @@
 
 # Overview
 
-This .md document shows concise instructions for minimal installation of different packages used in [hepmc-courses](https://github.com/Sergeyir/hepmc-courses) repository. You don't need to install all packages listed here, but only packages that are required for your project. For further detail or more possibilities of installation consult the respective package website, documentation, and README file.
+This .md document shows concise instructions for minimal installation of different packages used in [hep-courses](https://github.com/Sergeyir/hep-courses) repository. You don't need to install all packages listed here, but only packages that are required for your project. For further detail or more possibilities of installation consult the respective package website, documentation, and README file.
 
 # Installation tutorial
 
