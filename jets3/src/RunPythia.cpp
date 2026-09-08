@@ -1,6 +1,6 @@
-/** 
+/**
  *  @file   RunPythia.cpp
- *  @brief  Contains simplest case that shows how the data can be generated with PYTHIA8 and LHAPDF6 and processed with FASTJET3 for jets selection 
+ *  @brief  Contains simplest case that shows how the data can be generated with PYTHIA8 and LHAPDF6 and processed with FASTJET3 for jets selection
  *
  *  This file is a part of a project hep-courses/jets3 (https://github.com/Sergeyir/hep-courses/jets3).
  *
@@ -14,12 +14,12 @@
 int main(int argc, char **argv)
 {
    // printing info on usage and exiting program if number of parameters is incorrect
-   if (argc != 3) 
+   if (argc != 3)
    {
       std::cout << "\033[1m\033[31mError:\033[0m Expected 2 parameters while " <<
                    std::to_string(argc - 1) << " parameter(s) were provided \n"\
                    "Usage: bin/RunPythia inputFileName.yaml numberOfEvents" << std::endl;
-      std::cout << "[\033[1m\033[32mINFO\033[0m] " << 
+      std::cout << "[\033[1m\033[32mINFO\033[0m] " <<
                    " input file example is located in input directory" << std::endl;
       return 1;
    }
@@ -61,19 +61,19 @@ int main(int argc, char **argv)
    // uncomment the next line if you do not need for pythia to print event info and banner
    //pythia.readString("Print:quiet = on");
 
-   // initializing pythia; this step pythia applies parameters we set earlier and 
+   // initializing pythia; this step pythia applies parameters we set earlier and
    // checks if there are problems with the current specification
 	pythia.init();
 
    // creating directory in which output files will be written
    std::filesystem::create_directory("output");
-   // file in which all histogram will be written; the following line will create 
+   // file in which all histogram will be written; the following line will create
    // (overwrite if exists) the file output/generated.root and root will point to it
    // so that TObject objects can be written in it by using method TObject::Write()
    TFile outputFile("output/pythia.root", "RECREATE");
    // if another file is created after this with option "RECREATE", "UPDATE", or "CREATE"
    // root will try to write TObject objects to the new defined file
-   // if you have multiple TFile files you write in in yor program use 
+   // if you have multiple TFile files you write in in yor program use
    // TFile::cd() to point root to the file you need
 
    // To do: declare histograms to fill with data
@@ -88,9 +88,9 @@ int main(int argc, char **argv)
       // this tells pythia to generate next event
 		if (!pythia.next()) continue;
 
-      // vector that will be filled with all final state particles that passed all cuts
+      // vector that will be filled with all final state particles
       std::vector<fastjet::PseudoJet> particles;
-      
+
       // to get information on cross sections, weights, etc. use info on
       // https://pythia.org/latest-manual/CrossSectionsAndWeights.html
 
@@ -104,23 +104,29 @@ int main(int argc, char **argv)
       // iterating over all particles in a current event
 		for (int j = 0; j < pythia.event.size(); j++)
       {
-         // to get information of a particle you can use info on 
+         // to get information of a particle you can use info on
          // https://pythia.org/latest-manual/ParticleProperties.html
 
-         // prints particle id (more info on id: 
-         // https://pdg.lbl.gov/2007/reviews/montecarlorpp.pdf)
-         
-         // in experiments jets usually only consist of charged (+-1q) final state particles
-         // neutral particles need to be excluded 
-         // (although photons and neutral hadrons can be used and sometimes are included)
-         // if (abs(pythia.event[j].charge()) != 1) continue;
-         // but for this work all particles will be included
+         if (i == 0)
+         {
+            // prints current particle id (more info on id:
+            // https://pdg.lbl.gov/2007/reviews/montecarlorpp.pdf)
+            std::cout << pythia.event[j].id() << std::endl;
+         }
 
+         // in experiments jets usually measured from charged (+-1q) final state particles
+         // sometimes neutral particles are also employed in jet reconstruction algorithms
+         // in this work all particles will be used
+
+         // To do: add restrictions for particles selected for jets
          // adding fastjet::PseudoJet entry to the particles vector
          particles.emplace_back(pythia.event[j].px(), // x component of momentum [GeV/c]
                                 pythia.event[j].py(), // y component of momentum [GeV/c]
                                 pythia.event[j].pz(), // z component of momentum [GeV/c]
                                 pythia.event[j].e()); // energy [GeV]
+
+         // To do: add a condition in this loop that checks whether a particle
+         // is a parton outgoing from a hard process so that you can get their pT and y
       }
 
       // running jet clustering algorithm
@@ -131,8 +137,8 @@ int main(int argc, char **argv)
       // iterating over reconstructed jets
       for (unsigned int j = 0; j < inclusiveJets.size(); j++)
       {
-         // To do : add a check that tests whether jets are within the needed pseudorapidity range
          // To obtain pT of a jet use inclusiveJets[j].pt()
+         // To obtain rapidity of a jet use inclusiveJets[j].rap()
       }
    }
 
@@ -140,7 +146,7 @@ int main(int argc, char **argv)
    std::cout << pythia.info.sigmaGen() << std::endl;
 
    // closing file; this is not required in the current case, however in a general case
-   // it is better to close files when you are done working with them 
+   // it is better to close files when you are done working with them
    // so that there are no unintended writes/reads or assignment TObject file ownership
    outputFile.Close();
 

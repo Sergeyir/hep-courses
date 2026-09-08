@@ -106,7 +106,7 @@ Similarly, for $d \sigma / d \Delta y$ you have to determine $\Delta p_T$ for ea
 3. Start event generation
 4. Select partons from hard interactions, limit them within your pseudorapidity range, and store their $p_T$ and $y_1$ in the histogram to obtain multiplicity vs $p_T$ vs $y_1$
 5. Convert multiplicity vs $p_T$ of partons into invariant cross-section $d \sigma/d p_T dy_1 dy_2$
-6. Use rapidity coverage in each $p_T$ bin as $\Delta y_1$ estimate (which also equals to $\Delta y_2$) to calculate $d \sigma/d p_T$ using Eq.1.
+6. Check whether the rapidity coverage throughout different $p_T$ bins stays the same and use it as $\Delta y_1$ estimate (which also equals to $\Delta y_2$) to calculate $d \sigma/d p_T$ using Eq.1. If rapidity coverage changes, approximate it and use approximation as $\Delta y_1$ estimate.
 
 As a foundation, for C++ use include/RunPythia.hpp and src/RunPythia.cpp, while for python use scripts/run_pythia.py. Look for "To do" in the comments for hints.
 
@@ -232,7 +232,7 @@ Repeat instructions in this section until convergence of $d \sigma / dp_T dy_1 d
 
 Recommended minimal number of integration steps: 1000
 
-Finally, $d \sigma / dp_T$ can be obtained by estimating $\Delta y_1$ as bin rapidity coverage for each $p_T$ bin and then using Eq.1.
+Finally, $d \sigma / dp_T$ can be obtained by estimating $\Delta y_1$ as bin rapidity coverage (or as an approximation of different $p_T$ bin rapidity coverages) for each $p_T$ bin and then using Eq.1.
 
 ## MadGraph NLO
 
