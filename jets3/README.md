@@ -62,11 +62,11 @@ It is recommended to save the calculated cross sections in .root files, so that 
 <details>
 <summary>Assignment options</summary>
 
-There are 3 assignment options for $s_{\sqrt{NN}}$
+There are 3 assignment options for $s_{\sqrt{NN}}$ and $\hat{p}_{T}^{min}$
 
-1. $s_{\sqrt{NN}} = 2.36 TeV, $\hat{p}_T^{min} = 15$ GeV
-2. $s_{\sqrt{NN}} = 7$ TeV, $\hat{p}_T^{min} = 25$ GeV
-3. $s_{\sqrt{NN}} = 13.6$ TeV, $\hat{p}_T^{min} = 25$ GeV
+1. $s_{\sqrt{NN}} = 2.36$ TeV, $\hat{p}_{T}^{min} = 15$ GeV
+2. $s_{\sqrt{NN}} = 7$ TeV, $\hat{p}_{T}^{min} = 25$ GeV
+3. $s_{\sqrt{NN}} = 13.6$ TeV, $\hat{p}_{T}^{min} = 25$ GeV
 
 6 assignment options for PDF sets (LO and NLO respectively):
 
