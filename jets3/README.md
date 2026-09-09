@@ -64,7 +64,7 @@ It is recommended to save the calculated cross sections in .root files, so that 
 
 There are 3 assignment options for $s_{\sqrt{NN}}$ and $\hat{p}_{T}^{min}$
 
-1. $s_{\sqrt{NN}} = 2.36$ TeV, ${\hat{p}}_{T}^{min} = 15$ GeV
+1. $s_{\sqrt{NN}} = 2.36$ TeV, $\hat{p}_{T}^{min} = 15$ GeV
 2. $s_{\sqrt{NN}} = 7$ TeV, $\hat{p}_{T}^{min} = 25$ GeV
 3. $s_{\sqrt{NN}} = 13.6$ TeV, $\hat{p}_{T}^{min} = 25$ GeV
 
@@ -194,11 +194,11 @@ python scripts/calcylate_analytic.py -i input/pp7TeV.yaml -n 100
 Where the "-i" argument provides the name of the file with all important specifications, and "-n" provides the number of integration steps for Monte Carlo integration.
 </details>
 
-Lower details for $d \sigma / d \hat{t}$ are described. Similarly, $d \sigma / d \Delta y$ can be calculated after minor adjustments.
+Lower details for $d \sigma / d\hat{t}$ are described. Similarly, $d \sigma / d \Delta y$ can be calculated after minor adjustments.
 
 ### Preparing the code:
 
-1. Convert $d\sigma / d \hat{t}$ to $d \sigma / d \Omega$ and obtain obtain Eq.2 from Eq.51.42 in [2](#sources)
+1. Convert $d\sigma / d\hat{t}$ to $d \sigma / d \Omega$ and obtain obtain Eq.2 from Eq.51.42 in [2](#sources)
 2. Create LHAPDF::PDF object, invoke LHAPDF::PDF::mkPDF for this object while passing the pdf, and use it later to obtain $\alpha_{S}$ and $x f(x, \mu_{F})$ values)
 3. Declare and/or define a function that returns $x_1$ and $x_2$ for the given $p_T$, $\sqrt{s_{NN}}$, $y_1$, and $y_2$
 4. Deduce the formulas to calculate $\hat{s}$, $\hat{t}$, $\hat{u}$
