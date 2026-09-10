@@ -194,10 +194,10 @@ Download the source code from [here](https://pythia.org/). Place the downloaded 
 tar -xvzf "name_of_file.tgz"
 ```
 
-Then head into pythia8XXX directory (8XXX is the version you downloaded, replace X for your version). If you have troubles with the following instructions or you want to configure the installation for yourself consult the README file in pythia8XXX directory. Otherwise, first run to configure (you might need to change /bin/python-config to /bin/python3-config), which will generate Makefile
+Then head into pythia8XXX directory (8XXX is the version you downloaded, replace X for your version). If you have troubles with the following instructions or you want to configure the installation for yourself consult the README file in pythia8XXX directory. Otherwise, first run to configure (you might need to change /bin/python-config to /bin/python3-config on debian-based systems), which will generate Makefile
 
 ```sh
-./configure --with-python-config=/bin/python-config --with-lhapdf6-config=$LHAPDF6_PATH/bin/lhapdf-config
+./configure --with-python-config=/bin/python-config --with-lhapdf6=$LHAPDF6_PATH
 ```
 
 Now compile the source code with the following command
