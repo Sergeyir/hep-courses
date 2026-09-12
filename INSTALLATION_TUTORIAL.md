@@ -8,6 +8,7 @@
 - [HERWIG7](#herwig7)
 - [POWHEG-BOX](#powheg-box)
 - [MadGraph5_aMC@NLO](#madgraph)
+- [Installing python libraries](#installing_python_libraries)
 
 # Overview
 
@@ -433,3 +434,27 @@ If you already have MadGraph installed, try to pull the latest version by headin
 ```sh
 git pull
 ```
+
+# Installing python libraries
+
+Many python libraries can be installed with package manager (these are usually without quotes are python-"library_name" or python3-"library_name"). But there are many more that are only available on pip repository. Therefore I recommend using python virtual environment (more on it [here](https://docs.python.org/3/library/venv.html)). In short it allows you to install python libraries via pip (as pip installation is disabled by default on most distributions). If you are new to this topic, I recommend doing the following for now (you can change your setup later when you get used to it):
+
+Create the virtual environment using the following command while replacing "/path/to/new/virtual/environment" to the desired path (recommended path: $HOME/.python_env)
+
+```sh
+python -m venv /path/to/new/virtual/environment
+```
+
+After you can activate the virtual environment with (replace "/path/to/new/virtual/environment" with your path)
+
+```sh
+source /path/to/new/virtual/environment/bin/activate
+```
+
+You can use pip now to install python libraries. To deactivate the virtual environment run
+
+```sh
+deactivate
+```
+
+You can add the source command in your profile aliases for quick access to python virtual environment
