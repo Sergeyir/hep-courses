@@ -39,6 +39,7 @@ int main(int argc, char **argv)
 
    // reading parameters from .yaml file
    // lower we can use YAML::Node object data via array index operator[]
+   // casting is required as .yaml file does not store types
    const std::string pdfset = inputFileContents["pdfset"].as<std::string>();
    // To do: read and assign below the collision energy, pthatmin, pseudorapidity range, and R from the .yaml file
    const double pTHatMin = 0.;
@@ -51,7 +52,7 @@ int main(int argc, char **argv)
    // (switch the version if you have a newer one)
    Pythia8::Pythia pythia;
 
-   // To do: enable HardQCD and/or SoftQCD, set collision energy, pTHatMin, pdf set using pythia.readString method
+   // To do: enable HardQCD and/or SoftQCD (determine first which one is required for the current task), set collision energy, pTHatMin, pdf set using pythia.readString method
    // (HardQCD: https://pythia.org/latest-manual/QCDHardProcesses.html)
    // (SoftQCD: https://pythia8.web.cern.ch/manuals/pythia8317/QCDSoftProcesses.html)
    // (Collision and beam parameters: https://pythia.org/latest-manual/BeamParameters.html)
@@ -76,16 +77,17 @@ int main(int argc, char **argv)
    // if you have multiple TFile files you write in in yor program use
    // TFile::cd() to point root to the file you need
 
-   // To do: declare histograms to fill with data
+   // To do: declare histograms to store the needed data
 
    // Declaring fastjet::JetDEfinition instance using anti kt jet clustering algorithm
    // More on fastjet: https://indico.cern.ch/event/264054/contributions/592237/attachments/467910/648313/fastjet-doc-3.0.3.pdf
    fastjet::JetDefinition jetDef(fastjet::antikt_algorithm, R);
 
-   // iterating over all events (we specified argv[2] to be the number of events we generate)
+   // iterating over all events
 	for (unsigned long i = 0; i < numberOfEvents; i++)
    {
       // this tells pythia to generate next event
+      // skipping if problems occur
 		if (!pythia.next()) continue;
 
       // vector that will be filled with all final state particles
@@ -96,7 +98,7 @@ int main(int argc, char **argv)
 
       // weight for the current event
       const double eventWeight = pythia.info.weight();
-      // Exercise: Can you say if the event weight is needed in p+p and why?
+      // Exercise: Can you determine whether the event weight is needed in p+p and why?
 
       // to get information of a pythia event you can use info on
       // https://pythia.org/latest-manual/EventRecord.html
@@ -107,6 +109,7 @@ int main(int argc, char **argv)
          // to get information of a particle you can use info on
          // https://pythia.org/latest-manual/ParticleProperties.html
 
+         // printing id of particles in a first event (as an example)
          if (i == 0)
          {
             // prints current particle id (more info on id:
@@ -119,6 +122,7 @@ int main(int argc, char **argv)
          // in this work all particles will be used
 
          // To do: add restrictions for particles selected for jets
+
          // adding fastjet::PseudoJet entry to the particles vector
          particles.emplace_back(pythia.event[j].px(), // x component of momentum [GeV/c]
                                 pythia.event[j].py(), // y component of momentum [GeV/c]
