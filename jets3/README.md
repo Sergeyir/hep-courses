@@ -131,6 +131,12 @@ Run the python script showing simple example to generate 1000 events with pythia
 python scripts/run_pythia.py -i input/pp7TeV.yaml -n 1000
 ```
 
+Or alternatively 
+
+```sh
+./scripts/run_pythia.py -i input/pp7TeV.yaml -n 1000
+```
+
 </details>
 
 ## PYTHIA8+FASTJET3 LO
@@ -189,6 +195,12 @@ Check the code srcipts/run_analytic.py and finish it. After adding updates you c
 
 ```sh
 python scripts/calcylate_analytic.py -i input/pp7TeV.yaml -n 100
+```
+
+Or alternatively 
+
+```sh
+./scripts/run_pythia.py -i input/pp7TeV.yaml -n 1000
 ```
 
 Where the "-i" argument provides the name of the file with all important specifications, and "-n" provides the number of integration steps for Monte Carlo integration.
