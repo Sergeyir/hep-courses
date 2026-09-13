@@ -39,6 +39,7 @@ int main(int argc, char **argv)
    // (switch the version if you have a newer one)
    Pythia8::Pythia pythia;
 
+   // To do: determine whether HardQCD and/or SoftQCD needed in this analysis
    // HardQCD: https://pythia.org/latest-manual/QCDHardProcesses.html
    pythia.readString("HardQCD:all = on");
    // SoftQCD: https://pythia8.web.cern.ch/manuals/pythia8317/QCDSoftProcesses.html
