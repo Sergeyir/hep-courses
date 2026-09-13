@@ -210,7 +210,7 @@ Lower details for $d \sigma / d\hat{t}$ are described. Similarly, $d \sigma / d 
 
 ### Preparing the code:
 
-1. Convert $d\sigma / d\hat{t}$ to $d \sigma / d \Omega$ and obtain obtain Eq.2 from Eq.51.42 in [2](#sources)
+1. Convert $d\sigma / d$ $\hat{t}$ to $d \sigma / d \Omega$ and obtain obtain Eq.2 from Eq.51.42 in [2](#sources)
 2. Create LHAPDF::PDF object, invoke LHAPDF::PDF::mkPDF for this object while passing the pdf, and use it later to obtain $\alpha_{S}$ and $x f(x, \mu_{F})$ values)
 3. Declare and/or define a function that returns $x_1$ and $x_2$ for the given $p_T$, $\sqrt{s_{NN}}$, $y_1$, and $y_2$
 4. Deduce the formulas to calculate $\hat{s}$, $\hat{t}$, $\hat{u}$
@@ -231,11 +231,7 @@ Lower details for $d \sigma / d\hat{t}$ are described. Similarly, $d \sigma / d 
 <details>
 <summary>Sampling re-weight</summary>
 
-Let's assume you have an integral over N-dimensional function
-
-```math
-I = \int_{x_1, x_2, ..., x_N} f(x_1, x_2, ... x_N) dx_1 dx_2 ... dx_N
-```
+Let's assume you have an integral over N-dimensional function: $I = \int_{x_1, x_2, ..., x_N} f(x_1, x_2, ... x_N) dx_1 dx_2 ... dx_N$
 
 Unweighted MC samples each $x_i$ uniformly. However this approach is unreliable (without extensive computations) for functions that have most of the integral within a narrow $x_i$ region and/or extreme slopes (for example invariant $p_T$ spectra). The higher the dimensionality of the function the more unreliable unweighted MC becomes as the biggest part of the integral is concentrated on the thin N-1 dimensional surface which is much smaller than N-dimensional cube we sample over.
 
