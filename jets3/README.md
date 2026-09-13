@@ -222,11 +222,11 @@ Lower details for $d \sigma / d\hat{t}$ are described. Similarly, $d \sigma / d 
 2. Iterate over $pT$ bins of the $y_1$ vs $p_T$ histogram. For each $p_T$ bin create a cycle (recommended minimal number of iterations: 10000) in which $y_1$ and $y_2$ generate uniformly within kinematic region. For each iteration of this cycle
     1. Calculate $x_1$ and $x_2$ and check whether these values lie within physically possible kinematic region 
     2. Calculate $\hat{s}$, $\hat{t}$, and $\hat{u}$
-    3. Calculate $d \sigma / d \hat{t}$ for each hard interaction
+    3. Calculate $d \sigma /$$d \hat{t}$ for each hard interaction
     4. Calculate $d \sigma / dp_T dy_1 dy_2$ by summing over all hard processes interactions 
     5. Apply sampling re-weight to $y_1$ (see explanation below) as $y_2$ can be obtained with $y_1$ and $p_T$ and perform steps 1-4 again. Algorithm in steps 1-5 is recommended to be performed at least 10 times.
     6. Fill $d \sigma / dp_T dy_1$ vs $y_1$ vs $p_T$ histogram with obtained result
-3. For each $p_T$ bin divide the resulting histogram (for all $y_1$ values) by the number of successful integration steps to obtain normalized #d \sigma / dp_T dy_1 dy$ distribution
+3. For each $p_T$ bin divide the resulting histogram (for all $y_1$ values) by the number of successful integration steps to obtain normalized $d \sigma / dp_T dy_1 dy$ distribution
 
 <details>
 <summary>Sampling re-weight</summary>
