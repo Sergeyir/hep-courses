@@ -49,8 +49,9 @@ There are 6 assignment options for the particle species (see [1](#sources) to fi
 
 3 assignment options for collision systems:
 
-1. (LHC) $p+p$, $p$+Pb, Pb+Pb, $\sqrt{s_{NN}} = 5.36$ TeV
-2. (RHIC) $p+p$, $p$+Au, $Au+Au$, $\sqrt{s_{NN}} = 200$ GeV
+1. $p+p$ , $p$+Pb, Pb+Pb, $\sqrt{s_{NN}} = 5.36$ TeV (LHC). Use NNPDF40_lo_as_01180 for protons, nCTEQ15WZ_208_82 for Pb.
+2. $p+p$, $p$+Au, and $Au+Au$ (both , $\sqrt{s_{NN}} = 200$ GeV (RHIC). Use CT18LO for protons, nCTEQ15WZ_FullNuc_197_79 for Au.
+
 
 If your task number is 21 then your option is measurements of $pi^0$ in $p+p$, $p$+Pb, and Pb+Pb at $\sqrt{s_{NN}} = 5.36$ TeV
 
