@@ -64,16 +64,19 @@ int main(int argc, char **argv)
 
    // creating directory in which output files will be written
    std::filesystem::create_directory("output");
+   // To do: set a new name to the output file so that for each collision system output file will not be overwritten
    // file in which all histogram will be written; the following line will create
    // (overwrite if exists) the file output/generated.root and root will point to it
    // so that TObject objects can be written in it by using method TObject::Write()
-   TFile outputFile("output/pythia.root", "RECREATE");
+   TFile outputFile("output/pp.root", "RECREATE");
    // if another file is created after this with option "RECREATE", "UPDATE", or "CREATE"
    // root will try to write TObject objects to the new defined file
    // if you have multiple TFile files you write in in yor program use
    // TFile::cd() to point root to the file you need
 
-   // To do: declare histograms to fill with data
+   // To do: declare histograms to store the needed data
+   // 1-D histograms: https://root.cern.ch/doc/master/classTH1.html
+   // 2-D histograms: https://root.cern.ch/doc/master/classTH2.html
 
    // iterating over all events (we specified argv[2] to be the number of events we generate)
 	for (unsigned long i = 0; i < numberOfEvents; i++)
@@ -86,7 +89,7 @@ int main(int argc, char **argv)
 
       // weight for the current event
       const double eventWeight = pythia.info.weight();
-      // Exercise: Can you say if the event weight is needed in p+p and why?
+      // Exercise: Can you say if the event weight is needed and why?
 
       // to get information of a pythia event you can use info on
       // https://pythia.org/latest-manual/EventRecord.html
