@@ -206,7 +206,7 @@ Or alternatively
 Where the "-i" argument provides the name of the file with all important specifications, and "-n" provides the number of integration steps for Monte Carlo integration.
 </details>
 
-Lower details for $d \sigma / d\hat{t}$ are described. Similarly, $d \sigma / d \Delta y$ can be calculated after minor adjustments.
+Lower details for $d \sigma / d$ $\hat{t}$ are described. Similarly, $d \sigma / d \Delta y$ can be calculated after minor adjustments.
 
 ### Preparing the code:
 
