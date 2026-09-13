@@ -216,35 +216,41 @@ Lower details for $d \sigma / d\hat{t}$ are described. Similarly, $d \sigma / d 
 4. Deduce the formulas to calculate $\hat{s}$, $\hat{t}$, $\hat{u}$
 5. Declare and/or define a function to calculate $d \sigma / d \Omega$ for each 2->2 hard interaction ([2](#sources) (Eq. 51.4 - 51.12)) for the given $\hat{s}$, $\hat{t}$, and $\hat{u}$
 
-### MC unweighted integration:
+### MC integration:
 
 1. Create 2-D histogram containing $d \sigma / dp_T dy_1$ vs $p_T$ vs $y_1$ (you don't need to fill in $y_2$ as you can obtain it from $y_1$ and $p_T$)
-2. Iterate over $pT$ bins of the $y_1$ vs $p_T$ histogram. For each $p_T$ bin create a cycle in which $y_1$ and $y_2$ generate uniformly within kinematic region. For each iteration of this cycle
+2. Iterate over $pT$ bins of the $y_1$ vs $p_T$ histogram. For each $p_T$ bin create a cycle (recommended minimal number of iterations: 10000) in which $y_1$ and $y_2$ generate uniformly within kinematic region. For each iteration of this cycle
     1. Calculate $x_1$ and $x_2$ and check whether these values lie within physically possible kinematic region 
     2. Calculate $\hat{s}$, $\hat{t}$, and $\hat{u}$
     3. Calculate $d \sigma / d \hat{t}$ for each hard interaction
-    4. Calculate $d \sigma / dp_T dy_1 dy_2$ by summing over all hard processes interactions and fill it in the $d \sigma / dp_T dy_1$ vs $y_1$ vs $p_T$ histogram
-4. For each $p_T$ bin divide the resulting histogram (for all $y_1$ values) by the number of successful integration steps to obtain normalized #d \sigma / dp_T dy_1 dy$ distribution
+    4. Calculate $d \sigma / dp_T dy_1 dy_2$ by summing over all hard processes interactions 
+    5. Apply sampling re-weight to $y_1$ (see explanation below) as $y_2$ can be obtained with $y_1$ and $p_T$ and perform steps 1-4 again. Algorithm in steps 1-5 is recommended to be performed at least 10 times.
+    6. Fill $d \sigma / dp_T dy_1$ vs $y_1$ vs $p_T$ histogram with obtained result
+3. For each $p_T$ bin divide the resulting histogram (for all $y_1$ values) by the number of successful integration steps to obtain normalized #d \sigma / dp_T dy_1 dy$ distribution
 
-Where $y_{max}$ - absolute maximum value of $y_1$ (and subsequently $y_2$ hence the square), $N_{success}$ - number of successful iterations steps (within kinematically possible region), $N_{all}$ - overall number of tries
+<details>
+<summary>Sampling re-weight</summary>
 
-Recommended minimal number of integration steps: 1000
+Let's assume you have an integral over N-dimensional function
 
-### MC weighted integration
+```math
+I = \int_{x_1, x_2, ..., x_N} f(x_1, x_2, ... x_N) dx_1 dx_2 ... dx_N
+```
 
-In MC integration we assumed $y_1$ and $y_2$ were distributed uniformly. But this is not always the case. You need to use $y_1$ vs $p_T$ distribution to obtain the $y_1$ distributions for each $p_T$ bin. Approximate each such distribution. Make sure to use function with the relevant form. Use these approximations as weight functions to assign $y_1$ and $y_2$ for each $p_T$ bin. Calculations stay the same, but you have to implement the following changes to the algorithm
+Unweighted MC samples each $x_i$ uniformly. However this approach is unreliable (without extensive computations) for functions that have most of the integral within a narrow $x_i$ region and/or extreme slopes (for example invariant $p_T$ spectra). The higher the dimensionality of the function the more unreliable unweighted MC becomes as the biggest part of the integral is concentrated on the thin N-1 dimensional surface which is much smaller than N-dimensional cube we sample over.
 
-1. Introduce the variable that keeps the track of sum of weights $\Sigma w_i$ before the loop and assign 0 to it
-2. While iterating over $p_T$ bins of the $y_1$ vs $p_T$ histogram, generate $y_1$ and $y_2$ values according to the weight function for the current $p_T$. For each iteration of the cycle add
-    1. Add current weight $w_i$ to $\Sigma w_i$
-    2. Add weight to the filling of $d \sigma / dp_T dy_1 dy_2$ vs $p_T$ vs $y_1$ histogram
-3. For each $p_T$ bin divide the result (for all $y_1$ values) by $\Sigma w_i$ to obtain normalized #d \sigma / dp_T dy_1 dy_2$ distribution
+Weighted MC sampling makes the choice of $x_i$ to be concentrated proportionally to the function significance in $x_i$ region. This can be achieved by iteratively performing the following algorithm:
 
-Repeat instructions in this section until convergence of $d \sigma / dp_T dy_1 dy_2$ vs $p_T$ vs $y_1$ is achieved.
+1. Separate the N-dimensional sampling region into large number N-dimensional cubes which contain the same integrand over $f(x_1, x_2, ... x_N)$ (for the first iteration separation is uniform, i.e the sampling is uniform, as we haven't calculated the $I$ yet)
+2. Perform the integration in each cube by sampling $x_i$ uniformly. The full integration is then a sum of of integrals over each cube.
+3. Perform steps 1 and 2 until convergence is achieved (number of cubes you divide the sampling region can also vary, and it is better to increase it for each iteration).
 
-Recommended minimal number of integration steps: 1000
+For this work 10 iterations would be enough as the integration is 1-dimensional for $d\sigma / dp_T$ (since $y_2$ can be obtained from $y_1$ and $p_T$) and 2-dimensional for $d\sigma / d \Delta y$.
+Minimum recommended value of the sampling region divisions: 100 for $d \sigma / dp_T$; 1000 for $d\sigma / d \Delta y$ (at least 100 along $p_T$ and at least 10 along $y_1$)
 
-Finally, $d \sigma / dp_T$ can be obtained by estimating $\Delta y_1$ as bin rapidity coverage (or as an approximation of different $p_T$ bin rapidity coverages) for each $p_T$ bin and then using Eq.1.
+</details>
+
+Finally, $d \sigma / dp_T$ can be obtained by estimating $\Delta y_1$ as bin rapidity coverage (or as an approximation of different $p_T$ bin rapidity coverages) for each $p_T$ bin.
 
 ## MadGraph NLO
 
