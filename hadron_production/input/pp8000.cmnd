@@ -1,0 +1,4 @@
+HardQCD:all = on
+SoftQCD:all = on
+PhaseSpace:pTHatMin = 1
+PDF:pSet = 8
