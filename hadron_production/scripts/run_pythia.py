@@ -7,7 +7,6 @@ import argparse
 import ROOT
 
 import pythia8
-import fastjet
 
 def run_pythia(input_file_name : str, n_events : int) -> int :
 
