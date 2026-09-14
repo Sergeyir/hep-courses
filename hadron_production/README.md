@@ -49,10 +49,10 @@ There are 6 assignment options for the particle species (see [1](#sources) to fi
 
 3 assignment options for collision systems:
 
-1. $p+p$ , $p$+Pb, Pb+Pb, $\sqrt{s_{NN}} = 5.36$ TeV, $\left| \eta \right| < 1$ (LHC). Use NNPDF40_lo_as_01180 for protons, nCTEQ15WZ_208_82 for Pb.
+1. $p+p$ , $p$+Pb, Pb+Pb, $\sqrt{s_{NN}} = 5.02$ TeV, $\left| \eta \right| < 1$ (LHC). Use NNPDF40_lo_as_01180 for protons, nCTEQ15WZ_208_82 for Pb.
 2. $p+p$, $p$+Au, and $Au+Au$ (both , $\sqrt{s_{NN}} = 200$ GeV, $\left| \eta \right| < 0.5$ (RHIC). Use CT18LO for protons, nCTEQ15WZ_FullNuc_197_79 for Au.
 
-If your task number is 21 then your option is measurements of $pi^0$ in $p+p$, $p$+Pb, and Pb+Pb at $\sqrt{s_{NN}} = 5.36$ TeV
+If your task number is 21 then your option is measurements of $pi^0$ in $p+p$, $p$+Pb, and Pb+Pb at $\sqrt{s_{NN}} = 5.02$ TeV
 
 Divide $p+A$ events into $0-20\%$, $20-40\%$, $40-C_{max}\%$ centrality classes (where $C_{max}$ - maximum centrality value for the given collision system), and $A+A$ into $0-10\%$, $10-20\%$, $20-40\%$, $40-60\%$, $60-C_{max}\%$. Use the following sources for $C_{max}$ and $N_{coll}$:
  - [4](#sources) for p+Au@200
@@ -62,13 +62,21 @@ Divide $p+A$ events into $0-20\%$, $20-40\%$, $40-C_{max}\%$ centrality classes 
 
 ## How to determine centrality in pythia
 
-The following section is yet unfinished
-
 There are many ways to determine centrality in Glauber model [3](#sources). In this work we use one of the simplest cases: centrality is determined by measuring charged particle multiplicity in pseudorapidity regions: $3.0 < \left| \eta \right| < 3.9$ (PHENIX) for RHIC, $2.8 < \left| \eta \right| < 5.1$ (ALICE) for LHC. This can be achieved using the following algorithm:
 
 1. Create 1-D histogram representing the multiplicity of charged particles and start pythia event generation
 2. For each event fill this histogram with the number of charged particles that are in the needed pseudorapidity region
-3. After obtaining enough statistics by running pythia, divide the histograms into 
+3. After obtaining enough statistics by running pythia, divide the histograms into part representing the amount of statistics from the whole histogram from higher to lower, i.e. for $0-10\% 10% of the data, for $10-20\%$ next 10% of the data, etc. (See Fig.1)
+
+![Fig. 1. A cartoon example of the correlation of the final state observable Nch with Glauber calculated quantities (b, Npart). [3](#sources)](https://www.researchgate.net/profile/Barbara-Betz/publication/45879759/figure/fig34/AS:669549175271436@1536644371698/Figure-B2-The-correlation-between-the-number-of-participating-nucleons-in-a-heavy-ion.png)
+
+
+<details>
+<summary>How to determine the in which centrality particle was born</summary>
+
+You can create a 2-D histogram for storing the needed particle $p_T$, and $N_{ch}$ of the event. After determining which $N_{ch}$ intervals lie within every centrality class, you can use these $N_{ch}$ to map the $N_{ch}$ to the centrality class of the event.
+
+</details>
 
 # Sources
 
