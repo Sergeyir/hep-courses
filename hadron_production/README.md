@@ -35,7 +35,7 @@ There are 6 assignment options for the particle species (see [1](#sources) to fi
 1. $pi^\pm$ 
 2. $pi^0$ 
 3. $K^\pm$
-4. $p_\bar{p}$
+4. $p+\bar{p}$
 5. $\varphi(1020)$
 6. $\Lambda(1115)$
 7. $D^0$
