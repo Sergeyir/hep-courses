@@ -3,11 +3,6 @@
 - [Overview](#overview)
 - [Required packages](#required_packages)
 - [Task guide](#task_guide)
-    - [Transforming differential cross sections](#transforming_differential_cross_sections)
-    - [PYTHIA8 LO](#pythia8_lo)
-    - [PYTHIA8+FASTJET3 LO](#pythia8+fastjet3_lo)
-    - [Analytic LO](#analytic_lo)
-    - [MadGraph NLO](#madgraph_nlo)
 - [Sources](#sources)
 
 # Overview
