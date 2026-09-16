@@ -88,13 +88,13 @@ Install the needed pdf sets. Edit the configuration of .yaml file in input for y
 
 ## Transforming differential cross sections
 
-You are not integrating for the whole $y_1$ and $y_2$ region for $d \sigma / d p_T$, thus for finite rapidity bins $y_min < y_1, y_2 < y_max$
+You are not integrating for the whole $y_1$ and $y_2$ region for $d \sigma / d p_T$, thus for finite rapidity bins $y_{min} < y_1, y_2 < y_{max}$
 
 ```math
-\frac{d \sigma}{d p_T} \approx \int_{y_min}^{y_max} \frac{d \sigma}{dp_T dy_1 dy_2} \Delta y_1 \Delta y_2 (Eq.1)
+\frac{d \sigma}{d p_T} \approx \int_{y_{min}}^{y_{max}} \frac{d \sigma}{dp_T dy_1 dy_2} \Delta y_1 \Delta y_2 (Eq.1)
 ```
 
-Where $\Delta y_1$, $\Delta y_2$ - kinematic regions of $y_1$ and $y_2$. This kinematic region may not equal to $y_max - y_min$ due to kinematic constrains for the given $p_T$. Therefore you have to determine $\Delta y_1$ and $\Delta y_2$.
+Where $\Delta y_1$, $\Delta y_2$ - kinematic regions of $y_1$ and $y_2$. This kinematic region may not equal to $y_{max} - y_{min}$ due to kinematic constrains for the given $p_T$. Therefore you have to determine $\Delta y_1$ and $\Delta y_2$.
 
 Similarly, for $d \sigma / d \Delta y$ you have to determine $\Delta p_T$ for each $\Delta y$ bin.
 
