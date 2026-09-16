@@ -52,7 +52,7 @@ cmake . && make -j
 
 # Task guide
 
-Your task is to calculate cross section $d \sigma/d p_T$ vs $p_T$ within your pseudorapidity region (and $d \sigma / d \Delta y$ vs $p_T$ if specified) using 4 different methods (pythia8 LO, pythia8+fastjet LO, analytic LO, Madgraph NLO). The output of your task must be the following:
+Your task is to calculate cross section $d \sigma/d p_T$ vs $p_T$ within your pseudorapidity region (and $d \sigma / d \Delta y$ vs $\Delta y$ if specified) using 4 different methods (pythia8 LO, pythia8+fastjet LO, analytic LO, Madgraph NLO). The output of your task must be the following:
 
 1. $\alpha_{S}$ vs $p_T$ graph
 2. Differential cross sections from 4 different methods on the same picture
