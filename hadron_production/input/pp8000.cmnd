@@ -1,4 +1,5 @@
-HardQCD:all = on
-SoftQCD:all = on
-PhaseSpace:pTHatMin = 1
+Beams:eCM = 8000
+Beams:idA = 2212
+Beams:idB = 2212
+PhaseSpace:pTHatMin = 5
 PDF:pSet = 8
