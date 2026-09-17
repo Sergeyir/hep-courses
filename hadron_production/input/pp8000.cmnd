@@ -4,3 +4,5 @@ Beams:idB = 2212
 PhaseSpace:pTHatMin = 5
 PDF:pSet = 8
 PDF:pSetB = 8
+!PDF:pSet = LHAPDF6:NNPDF40_lo_as_01180 ! Uncomment by removing !
+!PDF:pSetB = LHAPDF6:NNPDF40_lo_as_01180 ! Uncomment by removing !

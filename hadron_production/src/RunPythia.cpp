@@ -77,6 +77,8 @@ int main(int argc, char **argv)
    // To do: declare histograms to store the needed data
    // 1-D histograms: https://root.cern.ch/doc/master/classTH1.html
    // 2-D histograms: https://root.cern.ch/doc/master/classTH2.html
+   
+   TH1D hist("pT multiplicity", "", 200, 0., 25.);
 
    // iterating over all events (we specified argv[2] to be the number of events we generate)
 	for (unsigned long i = 0; i < numberOfEvents; i++)
@@ -105,12 +107,15 @@ int main(int argc, char **argv)
             // prints current particle id (more info on id:
             // https://pdg.lbl.gov/2007/reviews/montecarlorpp.pdf)
             std::cout << pythia.event[j].id() << std::endl;
+            hist.Fill(pythia.event[j].pT(), eventWeight);
          }
       }
    }
 
    // printing cross section (Can you deduce what the unit of measurement for this quantity is?)
    std::cout << pythia.info.sigmaGen() << std::endl;
+
+   hist.Write();  
 
    // closing file; this is not required in the current case, however in a general case
    // it is better to close files when you are done working with them
