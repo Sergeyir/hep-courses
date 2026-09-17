@@ -32,8 +32,8 @@ Your task is to calculate invariant $p_T$ spectra $1/(2\pi p_T) d^2 \sigma / dpT
 
 There are 6 assignment options for the particle species (see [1](#sources) to find MC id of particles, [2](#sources) for particle listings):
 
-1. $pi^\pm$ 
-2. $pi^0$ 
+1. $#pi^\pm$ 
+2. $#pi^0$ 
 3. $K^\pm$
 4. $p+\bar{p}$
 5. $\varphi(1020)$
