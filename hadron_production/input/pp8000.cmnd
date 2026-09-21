@@ -1,7 +1,6 @@
 Beams:eCM = 8000
 Beams:idA = 2212
 Beams:idB = 2212
-PhaseSpace:pTHatMin = 5
 PDF:pSet = 8
 PDF:pSetB = 8
 !PDF:pSet = LHAPDF6:NNPDF40_lo_as_01180 ! Uncomment by removing !
