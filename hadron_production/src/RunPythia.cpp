@@ -40,10 +40,11 @@ int main(int argc, char **argv)
    Pythia8::Pythia pythia;
 
    // To do: determine whether HardQCD and/or SoftQCD needed in this analysis
+   // Hint: look at SoftQCD:nonDiffractive definition (remind: you perform a minimum bias study)
    // HardQCD: https://pythia.org/latest-manual/QCDHardProcesses.html
-   pythia.readString("HardQCD:all = on");
+   //pythia.readString("HardQCD:all = on");
    // SoftQCD: https://pythia8.web.cern.ch/manuals/pythia8317/QCDSoftProcesses.html
-   pythia.readString("SoftQCD:all = on");
+   pythia.readString("SoftQCD:nonDiffractive = on");
    // setting parameters from .cmnd input file
    pythia.readFile(argv[1]);
    // More information on some pythia flags:
@@ -78,6 +79,7 @@ int main(int argc, char **argv)
    // 1-D histograms: https://root.cern.ch/doc/master/classTH1.html
    // 2-D histograms: https://root.cern.ch/doc/master/classTH2.html
    
+   // example:
    TH1D hist("pT multiplicity", "", 200, 0., 25.);
 
    // iterating over all events (we specified argv[2] to be the number of events we generate)
@@ -107,8 +109,8 @@ int main(int argc, char **argv)
             // prints current particle id (more info on id:
             // https://pdg.lbl.gov/2007/reviews/montecarlorpp.pdf)
             std::cout << pythia.event[j].id() << std::endl;
-            hist.Fill(pythia.event[j].pT(), eventWeight);
          }
+         hist.Fill(pythia.event[j].pT(), eventWeight);
       }
    }
 

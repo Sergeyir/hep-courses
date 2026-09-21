@@ -20,25 +20,22 @@ def run_pythia(input_file_name : str, n_events : int) -> int :
     # (switch the version if you have a newer one)
     pythia = pythia8.Pythia()
 
-    # To do: determine whether HardQCD and/or SoftQCD needed in this analysis
-    # HardQCD: https://pythia.org/latest-manual/QCDHardProcesses.html
-    pythia.readString("HardQCD:all = on");
-    # SoftQCD: https://pythia8.web.cern.ch/manuals/pythia8317/QCDSoftProcesses.html
-    pythia.readString("SoftQCD:all = on");
-    # setting parameters from .cmnd input file
-    pythia.readFile(input_file_name)
-
     # random generator seed; main can be changed to have seed argument. Seed is needed if you intend to perform calculations on multiple threads via bash scripts
     seed = 1;
     # setting the random seed
     pythia.readString("Random:seed = " + str(seed));
 
-    # To do: enable HardQCD and/or SoftQCD (determine first which one is required for the current task), set collision energy, pTHatMin, pdf set using pythia.readString method
+    # To do: determine whether HardQCD and/or SoftQCD needed in this analysis
+    # Hint: look at SoftQCD:nonDiffractive definition (remind: you perform a minimum bias study)
     # (HardQCD: https://pythia.org/latest-manual/QCDHardProcesses.html)
     # (SoftQCD: https://pythia8.web.cern.ch/manuals/pythia8317/QCDSoftProcesses.html)
+    # pythia.readString("HardQCD:all = on")
+    pythia.readString("SoftQCD:nonDiffractive = on")
     # (Collision and beam parameters: https://pythia.org/latest-manual/BeamParameters.html)
     # (Phase space cuts: https://pythia.org/latest-manual/PhaseSpaceCuts.html)
     # (PDF selection: https://pythia.org/latest-manual/PDFSelection.html)
+    # setting parameters from .cmnd input file
+    pythia.readFile(input_file_name)
 
     # uncomment the next line if you do not need for pythia to print event info and banner
     # pythia.readString("Print:quiet = on")
@@ -63,6 +60,9 @@ def run_pythia(input_file_name : str, n_events : int) -> int :
     # To do: declare histograms to store the needed data
     # 1-D histograms: https://root.cern.ch/doc/master/classTH1.html
     # 2-D histograms: https://root.cern.ch/doc/master/classTH2.html
+
+    # example:
+    hist = ROOT.TH1D("pT multiplicity", "", 200, 0., 25.);
 
     # iterating over all events
     for i in range(n_events) :
@@ -96,8 +96,12 @@ def run_pythia(input_file_name : str, n_events : int) -> int :
             if (i == 0) :
                 print(pythia.event[j].id())
 
+            hist.Fill(pythia.event[j].pT(), eventWeight);
+
     # printing cross section (Can you deduce what the unit of measurement for this quantity is?)
     print(pythia.infoPython().sigmaGen())
+
+    hist.Write();
 
     # closing file; this is not required in the current case, however in a general case
     # it is better to close files when you are done working with them 
