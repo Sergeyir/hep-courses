@@ -23,18 +23,6 @@
 #include "TH1D.h"
 #include "TRandom.h"
 
-/* @brief Returns random number that can be used as seed for TRandom
- */
-unsigned int GetRandomSeed();
-/* @brief Calculates d\sigma / d\Omega for all processes id1+id2 -> X + X for the given pT, \sqrt{s'_{NN}}, and y
- *
- * @param[in] id1 id of a 1st parton
- * @param[in] id2 id of a 2nd parton
- * @param[in] pT transverse momentum [GeV/c]
- * @param[in] s square root of s'_{NN} (' denotes parton COM frame) [GeV]
- * @param[in] y = y1 - y2
- * @param[out] d\sigma / dp_T dy_1 dy_2
- */
 double GetDSigmaDOmega(const int id1, const int id2, const double pT, 
                        const double s, const double y);
 /* @brief Calculates d\sigma / dp_T dy_1 dy_2 for the given pT, \sqrt{s'_{NN}}, y1, y2, x1, and x2

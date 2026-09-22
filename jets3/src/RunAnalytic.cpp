@@ -13,10 +13,6 @@
 
 /// LHDAPDF::PDF object; it is used to obtain \alpha_Q, Q1, and Q2 if initialized for the given pdf set
 LHAPDF::PDF *pdf;
-/// ROOT TRandom object; it is used to randomly select y1, y2, and p_T for MC integration
-TRandom rnd;
-/// number of integration steps for MC integration
-long numberOfIntegrationSteps;
 
 int main(int argc, char **argv)
 {
@@ -39,7 +35,7 @@ int main(int argc, char **argv)
       return 1;
    }
 
-   numberOfIntegrationSteps = std::stol(argv[2]);
+   unsigned long numberOfIntegrationSteps = std::stoul(argv[2]);
 
    // YAML::Node object reads all data from the .yaml file
    YAML::Node inputFileContents = YAML::LoadFile(argv[1]);
@@ -52,8 +48,6 @@ int main(int argc, char **argv)
 
    // setting pdf
    pdf = LHAPDF::mkPDF(pdfSet);
-   // setting random seed
-   rnd.SetSeed(GetRandomSeed());
 
    std::filesystem::create_directory("output");
    TFile outputFile("output/analytic.root", "RECREATE");
@@ -76,8 +70,8 @@ double GetDSigmaDOmega(const int id1, const int id2, const double pT,
 {
    // To do: define mandelstam variables (t, u) and substitute lower random dummies for them
    // (hint: it will be easier if you define cos(\Theta) first)
-   const double t = rnd.Uniform(-s, s);
-   const double u = rnd.Uniform(-s, s);
+   const double t = s/2.;
+   const double u = s/2.;
    
    // obtaining alpha_{S} at hard scale, i.e. \mu_F = p_T
    const double alphaS = pdf->alphasQ2(pT*pT);
@@ -123,15 +117,6 @@ double GetDSigmaDPTDY1DY2(const double pT, const double sqrtSNN,
    // To do: change/add an expression to calculate result for non-identical particles
    return 8.*M_PI*pT*pdf->xfxQ2(1, x1, pT*pT)*pdf->xfxQ2(1, x2, pT*pT)*
           GetDSigmaDOmega(1, 1, pT, s, y1 - y2)/s;
-}
-
-unsigned int GetRandomSeed()
-{
-	auto now = std::chrono::high_resolution_clock::now();
-	auto now_ms = std::chrono::time_point_cast<std::chrono::milliseconds>(now);
-	auto epoch = now_ms.time_since_epoch();
-	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(epoch);
-	return static_cast<unsigned int>(duration.count() % 900000000);
 }
 
 #endif /* RUN_ANALYTIC_CPP */
