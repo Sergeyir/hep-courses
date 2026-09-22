@@ -219,7 +219,7 @@ Lower details for $d \sigma / d$ $\hat{t}$ are described. Similarly, $d \sigma /
 ### MC integration:
 
 It is recommended to perform weighted sample MC integration. The easiest way to do this is by using adaptive integration algorithms.
-I recommend using [ROOT::Math::IntegratorMultiDim](https://root.cern.ch/doc/master/classROOT_1_1Math_1_1IntegratorMultiDim.html) with VEGAS algorithm [3](#sources) for C++ and [vegas](https://vegas.readthedocs.io/en/latest/index.html) for python for multidimensional integration. You can find examples for multidimensional integration in examples directory ([here](examples/NDimIntegration.cpp) for C++, and [here](examples/ndim_integration.py) for python).
+I recommend using [ROOT::Math::IntegratorMultiDim](https://root.cern.ch/doc/master/classROOT_1_1Math_1_1IntegratorMultiDim.html) with VEGAS algorithm [3](#sources) for C++ and [vegas](https://vegas.readthedocs.io/en/latest/index.html) for python for multidimensional integration. You can find code examples for multidimensional integration in ../examples directory ([here](../examples/NDimIntegration.cpp) for C++, and [here](../examples/ndim_integration.py) for python).
 
 ### Final calculations
 
