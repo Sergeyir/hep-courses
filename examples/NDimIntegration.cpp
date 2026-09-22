@@ -1,10 +1,10 @@
 /** 
  *  @file  NDimIntegration.cpp
- *  @brief Contains a simple example that shows how N-dimensional integration can be performed with the use of ROOT::Math::IntegrationMultiDim
+ *  @brief Contains a simple example that shows how N-dimensional MC integration can be performed with the use of ROOT::Math::IntegrationMultiDim
  *
  *  Use ROOT cling to run: root NDimIntegration.cpp
  *
- *  This file is a part of a project hep-courses/jets3 (https://github.com/Sergeyir/hep-courses/jets3).
+ *  This file is a part of a repository hep-courses (https://github.com/Sergeyir/hep-courses/jets3).
  *
  *  @author Sergei Antsupov (antsupov0124@gmail.com)
  **/
@@ -29,7 +29,6 @@ void NDimIntegration()
    // More info on IntegratorMultiDim: 
    // https://root.cern.ch/doc/master/classROOT_1_1Math_1_1IntegratorMultiDim.html
    // here kVEGAS sets VEGAS algorithm (I recommend using it for your task)
-   // https://en.wikipedia.org/wiki/VEGAS_algorithm
    ROOT::Math::IntegratorMultiDim integrator(function,
                                              ROOT::Math::IntegrationMultiDim::kVEGAS,
                                              -1., -1., 100000);

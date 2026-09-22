@@ -3,7 +3,7 @@
 #  @file  ndim_integration.py
 #  @brief Contains a simple example that shows how N-dimensional integration can be performed with the use of python vegas library
 #
-#  This file is a part of a project hep-courses/jets3 (https://github.com/Sergeyir/hep-courses/jets3).
+#  This file is a part of a repository hep-courses (https://github.com/Sergeyir/hep-courses/jets3).
 #
 #  @author Sergei Antsupov (antsupov0124@gmail.com)
 
@@ -16,6 +16,7 @@ ndim = 4
 low_lim = np.array([-1, -1, -1, -1])
 upp_lim = np.array([1, 1, 1, 1])
 
+# non-normalized 4d gaus - function example
 # the following decorator is recommended - it allows to pass numpy array in batches which speeds up the calculation
 @vegas.batchintegrand
 def gaus4d(x):
