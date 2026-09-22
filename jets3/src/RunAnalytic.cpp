@@ -54,10 +54,10 @@ int main(int argc, char **argv)
 
    // To do: create the histogram to store data in and use it later
 
-   // To do: perform weighted MC integration using ROOT::Math::IntegrationMultiDim
+   // To do: perform weighted MC integration using ROOT::Math::IntegrationMultiDim for each pT bin of a histogram you created
    // Hint: use GetDSigmaDPTDY1DY2 function to create ROOT::Math::Functor
    // see NDimIntegration.cpp in hep-courses/examples
-   // GetDSigmaDPTDY1DY2(pT, sqrtSNN, y1, y2);
+   // Hint: you can use numberOfIntegrationSteps to pass the number of calls for the integrator
 
    // To do: after filling the histogram write it to the outputFile before closing it
    outputFile.Close();
@@ -102,7 +102,7 @@ double GetX2(const double pT, const double sqrtSNN, const double y1, const doubl
 double GetDSigmaDPTDY1DY2(const double pT, const double sqrtSNN, 
                           const double y1, const double y2)
 {
-   // calculating x1 and x2
+   // To do: fix GetX1 and GetX2 functions
    const double x1 = GetX1(pT, sqrtSNN, y1, y2);
    const double x2 = GetX2(pT, sqrtSNN, y1, y2);
 
