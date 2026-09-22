@@ -58,31 +58,14 @@ int main(int argc, char **argv)
    std::filesystem::create_directory("output");
    TFile outputFile("output/analytic.root", "RECREATE");
 
-   // To do: change this histogram to 2D (d\sigma / dp_T dy_1 dy_2)
-   TH1D distrDSigmaDPT("dsigmadpT", "d#sigma/dp_{T}", 1000 + pTHatMin, 0., 100. + pTHatMin);
+   // To do: create the histogram to store data in and use it later
 
-   const int nBinsX = distrDSigmaDPT.GetXaxis()->GetNbins();
-   // iterating over $p_T$ bins
-   for (int i = 1; i <= nBinsX; i++)
-   {
-      // the line below prints progress in percents
-      std::cout << static_cast<double>(i)/static_cast<double>(nBinsX)*100. << "%\r";
+   // To do: perform weighted MC integration using ROOT::Math::IntegrationMultiDim
+   // Hint: use GetDSigmaDPTDY1DY2 function to create ROOT::Math::Functor
+   // see NDimIntegration.cpp in hep-courses/examples
+   // GetDSigmaDPTDY1DY2(pT, sqrtSNN, y1, y2);
 
-      // randomly choosing y1 and y2
-      const double y1 = rnd.Uniform(-absMaxY, absMaxY);
-      const double y2 = rnd.Uniform(-absMaxY, absMaxY);
-
-      double err;
-      const double dSigmaDPTDY1DY2 = GetDSigmaDPTDY1DY2(distrDSigmaDPT.GetXaxis()->GetBinCenter(i), sqrtSNN, y1, y2, err);
-
-      distrDSigmaDPT.SetBinContent(i, dSigmaDPTDY1DY2);
-      distrDSigmaDPT.SetBinError(i, err);
-   }
-
-   distrDSigmaDPT.Write();
-
-   std::cout << distrDSigmaDPT.Integral() << std::endl;
-
+   // To do: after filling the histogram write it to the outputFile before closing it
    outputFile.Close();
 
    return 0;
@@ -123,47 +106,23 @@ double GetX2(const double pT, const double sqrtSNN, const double y1, const doubl
 }
 
 double GetDSigmaDPTDY1DY2(const double pT, const double sqrtSNN, 
-                          const double y1, const double y2, double &err)
+                          const double y1, const double y2)
 {
-   // result of MC integration
-   double result = 0.;
-   // normalization constant for MC integration: equals to the number of succesfull integration steps
-   long normalization = 0;
+   // calculating x1 and x2
+   const double x1 = GetX1(pT, sqrtSNN, y1, y2);
+   const double x2 = GetX2(pT, sqrtSNN, y1, y2);
 
-   for (long i = 0; i < numberOfIntegrationSteps; i++)
-   {
-      // calculating x1 and x2
-      const double x1 = GetX1(pT, sqrtSNN, y1, y2);
-      const double x2 = GetX2(pT, sqrtSNN, y1, y2);
+   // To do: add a check that tests whether x1 and x2 are within kinematicaly possible range
 
-      // To do: add a check that tests whether x1 and x2 are within kinematicaly possible range
+   // calculating \sqrt{\hat{s}}, i.e. the center of mass energy of 2 partons
+   const double s = sqrtSNN*sqrtSNN*x1*x2;
 
-      // calculating \sqrt{\hat{s}}, i.e. the center of mass energy of 2 partons
-      const double s = sqrtSNN*sqrtSNN*x1*x2;
-
-      // result of a sum over all combinations
-      double result = 0.;
-      
-      // Only qq->qq process for u quarks is shown (id = 1). This id can go from -5 to +5 (where id=0 is a gluon)
-      // To do: iterate over all possible combinations for the following expression
-      // To do : determine measurement units for the following expression
-      result += 8.*M_PI*pT*pdf->xfxQ2(1, x1, pT*pT)* pdf->xfxQ2(1, x2, pT*pT)*
-                GetDSigmaDOmega(1, 1, pT, s, y1 - y2)/s;
-      // To do: add an expression to calculate result for non-identical particles
-      // normalization constant is a sum of weights; for uniform distribution all weights are 1
-      normalization++;
-   }
-
-   if (normalization == 0) 
-   {
-      err = 0.;
-      return 0.;
-   }
-
-   result /= static_cast<double>(normalization);
-   err = result/sqrt(normalization);
-
-   return result;
+   // Only qq->qq process for u quarks is shown (id = 1). This id can go from -5 to +5 (where id=0 is a gluon)
+   // To do: iterate over all possible combinations for the following expression
+   // To do : determine measurement units for the following expression
+   // To do: change/add an expression to calculate result for non-identical particles
+   return 8.*M_PI*pT*pdf->xfxQ2(1, x1, pT*pT)*pdf->xfxQ2(1, x2, pT*pT)*
+          GetDSigmaDOmega(1, 1, pT, s, y1 - y2)/s;
 }
 
 unsigned int GetRandomSeed()

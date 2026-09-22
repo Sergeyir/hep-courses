@@ -48,7 +48,7 @@ double GetDSigmaDOmega(const int id1, const int id2, const double pT,
  * @param[out] d\sigma / dp_T dy_1 dy_2
  */
 double GetDSigmaDPTDY1DY2(const double pT, const double sqrtSNN, 
-                          const double y1, const double y2, double &err);
+                          const double y1, const double y2);
 /* @brief Calculates x (parton momentum fraction alongside Z axis) for the first parton for the given pT, \sqrt{s_{NN}}, y1, y2
  *
  * @param[in] pT transverse momentum [GeV/c]
