@@ -65,21 +65,26 @@ int main(int argc, char **argv)
 
    // creating directory in which output files will be written
    std::filesystem::create_directory("output");
-   // To do: set a new name to the output file so that for each collision system output file will not be overwritten
    // file in which all histogram will be written; the following line will create
    // (overwrite if exists) the file output/generated.root and root will point to it
    // so that TObject objects can be written in it by using method TObject::Write()
+   // To do: come up with idea on how to set unique names for output files, so that each 
+   // calculation of different collision systems would not overwrite the same file
+   // Hint: you can append unique system identifier to the file 
+   // (for example by setting a unique comment in .cmnd file, then extracting its contents
+   // with ifstream, and finally appending to the output TFile name)
    TFile outputFile("output/pp.root", "RECREATE");
    // if another file is created after this with option "RECREATE", "UPDATE", or "CREATE"
    // root will try to write TObject objects to the new defined file
    // if you have multiple TFile files you write in in yor program use
    // TFile::cd() to point root to the file you need
 
-   // To do: declare histograms to store the needed data
+   // To do: declare histograms to store numner of event charged particles multiplicity an
+   // pT multiplicity vs number of charged particles
    // 1-D histograms: https://root.cern.ch/doc/master/classTH1.html
    // 2-D histograms: https://root.cern.ch/doc/master/classTH2.html
    
-   // example:
+   // example: pT multiplicity
    TH1D hist("pT multiplicity", "", 200, 0., 25.);
 
    // iterating over all events (we specified argv[2] to be the number of events we generate)

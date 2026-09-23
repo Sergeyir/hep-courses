@@ -46,23 +46,27 @@ def run_pythia(input_file_name : str, n_events : int) -> int :
 
     # creating directory in which the file outputFile will be written
     os.makedirs("output", exist_ok=True)
-    # To do: set a new name to the output file so that for each collision system output file will not be overwritten
     # file in which all histogram will be written; the following line will create 
     # (overwrite if exists) the file output/generated.root and root will point to it
     # so that TObject objects can be written in it by using method TObject::Write()
+    # To do: come up with idea on how to set unique names for output files, so that each 
+    # calculation of different collision systems would not overwrite the same file
+    # Hint: you can append unique system identifier to the file 
+    # (for example by setting a unique comment in .cmnd file, then extracting its contents
+    # with open() and read() function, and finally appending to the output TFile name)
     output_file = ROOT.TFile("output/pp.root", "RECREATE")
     # if another file is created after this with option "RECREATE", "UPDATE", or "CREATE"
     # root will try to write TObject objects to the new defined file
     # if you have multiple TFile files you write in in yor program use 
     # TFile::cd() to point root to the file you need
 
-    # To do: declare histograms to store the needed data
-    # To do: declare histograms to store the needed data
+    # To do: declare histograms to store numner of event charged particles multiplicity an
+    # pT multiplicity vs number of charged particles
     # 1-D histograms: https://root.cern.ch/doc/master/classTH1.html
     # 2-D histograms: https://root.cern.ch/doc/master/classTH2.html
 
-    # example:
-    hist = ROOT.TH1D("pT multiplicity", "", 200, 0., 25.);
+    # example: pT multiplicity
+    hist_pt = ROOT.TH1D("pT multiplicity", "", 200, 0., 25.);
 
     # iterating over all events
     for i in range(n_events) :
@@ -96,12 +100,12 @@ def run_pythia(input_file_name : str, n_events : int) -> int :
             if (i == 0) :
                 print(pythia.event[j].id())
 
-            hist.Fill(pythia.event[j].pT(), eventWeight);
+            hist_pt.Fill(pythia.event[j].pT(), eventWeight);
 
     # printing cross section (Can you deduce what the unit of measurement for this quantity is?)
     print(pythia.infoPython().sigmaGen())
 
-    hist.Write();
+    hist_pt.Write();
 
     # closing file; this is not required in the current case, however in a general case
     # it is better to close files when you are done working with them 
