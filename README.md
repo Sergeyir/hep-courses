@@ -1,8 +1,12 @@
 # Overview
 
-This repository contains my courses in HEP software packages and programming. Courses/projects are organized into separate directories. Each project README.md contains list of required packages and instructions in README.md and code that can be used as a foundation for your code.
+This repository contains my courses in HEP software packages and programming. 
+Courses/projects are organized into separate directories. 
+Each project README.md contains list of required packages and instructions in README.md and basic code that can be used as a foundation for your task.
 
 Instructions for installing all HEP packages are provided in [Installation tutorial](INSTALLATION_TUTORIAL.md). Each project' README.md contains a list of required packages. If you are new to HEP packages It is recommended for you to follow the instructions. But if you are experienced and don't want to re-install packages and/or create/redefine environmental variables, see $"PACKAGE"_PATH in CMakeLists.txt and in INSTALLATION_TUTORIAL.md (where "PACKAGE" can be interchanged with the package name, e.g. ROOT, HEPMC, etc.) so you can reconfigure it yourself.
+
+In examples directory you can find simple code that shows how to perform various basic tasks.
 
 # Installation
 
