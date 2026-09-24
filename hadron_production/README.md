@@ -63,7 +63,7 @@ There are many ways to determine centrality in Glauber model [3](#sources). In t
 2. For each event fill this histogram with the number of charged particles that are in the needed pseudorapidity region
 3. After obtaining enough statistics by running pythia, divide the histograms into part representing the amount of statistics from the whole histogram from higher to lower, i.e. for $0-10\% 10% of the data, for $10-20\%$ next 10% of the data, etc. (See Fig.1)
 
-![Figure 1. A cartoon example of the correlation of the final state observable Nch with Glauber calculated quantities (b, Npart)](https://www.researchgate.net/profile/Barbara-Betz/publication/45879759/figure/fig34/AS:669549175271436@1536644371698/Figure-B2-The-correlation-between-the-number-of-participating-nucleons-in-a-heavy-ion.png)
+![Figure 1. A cartoon example of the correlation of the final state observable Nch with Glauber calculated quantities (b, Npart)](assets/The-correlation-between-the-number-of-participating-nucleons-in-a-heavy-ion.png)
 
 <details>
 <summary>How to determine the in which centrality particle was born</summary>
