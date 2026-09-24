@@ -74,46 +74,56 @@ You can create a 2-D histogram for storing the needed particle $p_T$, and $N_{ch
 
 </details>
 
-
 <details>
-<summary>How to obtain invariant $p_T$ spectra and cross-section from multiplicity</summary>
+<summary>How transform multiplicity to the invariant $p_T$ spectra and cross-section</summary>
 
-To obtain invariant $pT$ spectra for the current $p_T$ bin and $\Delta y$ range use the following equation
-```math
-\frac{1}{2\pi p_T} \frac{d^2N(p_T, \Delta y)}{dp_T dy} = \frac{1}{2\pi p_T} \frac{N(p_T, \Delta y)}{\Delta p_T \Delta y}
-```
-
-Where $\Delta p_T$ - $p_T$ range for the current $p_T$ bin, $N$ - multiplicity for the current $p_T$ bin and $\Delta y$ range.
-
-To obtain invariant $p_T$ cross section use the following equation
+Invariant $p_T$ spectra can be calculated as follows:
 
 ```math
-\frac{1}{2\pi p_T} \frac{d^2\sigma}{dp_T dy} = \frac{1}{2\pi p_T} \frac{d^2 N}{dp_T dy} \sigma_{tot}
+\frac{1}{2 \pi p_T} \frac{d^2 N(p_T, \Delta y)}{d p_T d_y} = \frac{1}{N_{evt} \frac{1}{2 \pi p_T} \frac{N(p_T, \Delta y)}{ \Delta p_T \Delta y}
 ```
 
-Where $\sigma_{tot}$ - total cross section
+Where 
+- $N_{evt}$ - number of events
+- $\Delta y$ - width of a rapidity region
+- $\Delta p_T$ - width of a $p_T$ bin
+- $N(\Delta p_T, \Delta y)$ - multiplicity in a given $p_T$ bin and $\Delta y$ region 
+
+Then invariant $p_T$ cross-section can be calculated as follows:
+
+```math
+\frac{1}{2\pi p_T} \frac{d^2 \sigma}{dp_T dy} = \frac{1}{2 \pi p_T} \frac{d^2N}{d p_T dy} \sigma_{tot}
+```
+
+Where $\sigma_{tot}$ - total cross section of an event
 
 </details>
 
 <details>
 <summary>How to calculate $R_{AB}$ and $R_{CP}$</summary>
 
-Note: calculate $R_{AB}$ for each centrality class while $R_{CP}$ only once using central and peripheral collisions.
+For the arbitrary incoming nuclei A and B, for the given centrality class $R_{AB}$ can be calculated as follows:
 
 ```math
-R_{AB} = \frac{1}{N_{coll}^{AB}} \frac{1/(2 \pi p_T) d^2N^{AB} / dp_T dy}{1/ (2 \pi p_T) d^2N^{pp} / dp_T dy}
+R_{AB} = \frac{1}{N_{coll}^{AB}} \frac{1/(2 \pi p_T) d^2 N^{AB} / dp_T dy}{1/(2 \pi p_T) d^2 N^{pp} / dp_T dy}
 ```
 
-Where $N_{coll}^{AB}$ - average number of pairwise nucleon-nucleon collisions in A+B collisions for the given centrality class, $1/(2 \pi p_T) d^2N^{AB} / dp_T dy$ - invariant $p_T$ spectra in A+B collisions for the given centrality class, $1/(2 \pi p_T) d^2N^{pp} / dp_T dy$ - invariant $p_T$ spectra in $p+p$ collisions
+Where 
+- $N_{coll}^{AB}$ - average number of nucleon-nucleon collisions for the given centrality class
+- $1/(2 \pi p_T) d^2 N^{AB} / dp_T dy$ - invariant $p_T$ spectra in A+B collisions for the given centrality class
+- $1/(2 \pi p_T) d^2 N^{pp} / dp_T dy$ - invariant $p_T$ spectra in $p+p$ collisions
+
+$R_{CP}$ is similar to $R_{AB}$, but it is calculated using the yields from the same collision system (hence the CP in the name - central to peripheral):
 
 ```math
-R_{CP} = \frac{N_{coll}^{peripheral}}{N_{coll}^{central}} \frac{1/(2 \pi p_T) d^2N^{central} / dp_T dy}{1/ (2 \pi p_T) d^2N^{peripheral} / dp_T dy}
+R_{AB} = \frac{N_{coll}^{peripheral}}{N_{coll}^{central}} \frac{1/(2 \pi p_T) d^2 N^{central} / dp_T dy}{1/(2 \pi p_T) d^2 N^{peripheral} / dp_T dy}
 ```
 
-Where $N_{coll}^{central}$, $N_{coll}^{peripheral}$ - number of average pairwise nucleon-nucleon collisions in A+B in central and peripheral centrality classes respectively, $1/(2 \pi p_T) d^2N^{central} / dp_T dy$, $1/(2 \pi p_T) d^2N^{peripheral} / dp_T dy$ - invariant $p_T$ spectra in A+B in central and peripheral centrality classes respectively.
+Where 
+- $N_{coll}^{central}$, $N_{coll}^{peripheral}$ - average number of nucleon-nucleon collisions for the central and peripheral centrality classes respectively
+- $1/(2 \pi p_T) d^2 N^{central} / dp_T dy$, $1/(2 \pi p_T) d^2 N^{peripheral} / dp_T dy$ - invariant $p_T$ spectra in A+B collisions in central and peripheral centrality classes respectively
 
 </details>
-
 
 # Sources
 
