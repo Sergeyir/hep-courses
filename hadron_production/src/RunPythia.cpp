@@ -119,7 +119,7 @@ int main(int argc, char **argv)
    }
 
    // printing cross section (Can you deduce what the unit of measurement for this quantity is?)
-   std::cout << pythia.info.sigmaGen() << std::endl;
+   std::cout << pythia.info.sigmaGen() << "+-" << pythia.info.sigmaErr() << std::endl;
 
    hist.Write();  
 
