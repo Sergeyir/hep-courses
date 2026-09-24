@@ -11,7 +11,7 @@ void AnalyzeOutput()
    multPT->Scale(1./(2.*M_PI));
 
    // Iterating over x axis of a histogram (bin numbering starts at 1 at ends at number of bins)
-   for (int i = 1; i <= multPT->GetXaxis()->GetNBins(); i++)
+   for (int i = 1; i <= multPT->GetXaxis()->GetNbins(); i++)
    {
       // retrieving ith bin content of the histogram
       const double binContent = multPT->GetBinContent(i);
@@ -21,7 +21,7 @@ void AnalyzeOutput()
       const double pT = multPT->GetXaxis()->GetBinCenter(i);
       // delta pT can be calculated with TAXIS::GetBinWidth(int)
       // changing the bin content for each bin individually
-      multPT->SetBinContent(i, binContent)
+      multPT->SetBinContent(i, binContent);
    }
 
    // Draw the histogram if needed
