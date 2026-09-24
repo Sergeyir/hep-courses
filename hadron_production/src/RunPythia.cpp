@@ -49,7 +49,6 @@ int main(int argc, char **argv)
    pythia.readFile(argv[1]);
    // More information on some pythia flags:
    // (Collision and beam parameters: https://pythia.org/latest-manual/BeamParameters.html)
-   // (Phase space cuts: https://pythia.org/latest-manual/PhaseSpaceCuts.html)
    // (PDF selection: https://pythia.org/latest-manual/PDFSelection.html)
 
    // random generator seed; main can be changed to have seed argument. Seed is needed if you intend to perform calculations on multiple threads via bash scripts
