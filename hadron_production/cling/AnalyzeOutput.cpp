@@ -1,10 +1,16 @@
 void AnalyzeOutput()
 {
-   // opening the file
+   // make ROOT not to draw histogram in new window when Draw method is invoked
+   gROOT->SetBatch(kTRUE);
+   // do not draw statbox of a histogram
+   gStyle->SetOptStat(kFALSE);
+
+   // opening and loading the file
    TFile *file = TFile::Open("output/pp.root");
 
    // retrieving the histogram; by default TFile::Get return TObject pointer
-   // so you need to cast it to the type you have written
+   // so you need to cast it to the type you have written 
+   // (alternatively you can use c-style cast)
    TH1D *multPT = static_cast<TH1D *>(file->Get("pT multiplicity"));
 
    // To scale all contents of the histogram use
@@ -23,9 +29,48 @@ void AnalyzeOutput()
       // changing the bin content for each bin individually
       multPT->SetBinContent(i, binContent);
    }
+   // To do: add scaling by total cross section and divide each bin by the 
+   // bin width to obtain the invariant differential cross section
 
-   // Draw the histogram if needed
+   // Setting the title
+   multPT->SetTitle("");
+   // More info on tex syntax in ROOT: 
+   // https://root.cern.ch/doc/master/classTLatex.html
+   // Set the X axis title
+   multPT->GetXaxis()->SetTitle("p_{T}");
+   // Set the Y axis title
+   // To do: change the 
+   multPT->GetYaxis()->SetTitle("#frac{d #sigma}{d p_{T}}");
+
+   // You will also need to save the picture in .png and/or .pdf
+   // Use ROOT TCanvas to draw on the canvas and write it as a picture
+   // https://root.cern.ch/doc/master/classTCanvas.html
+   TCanvas canv("canv", "", 800, 800);
+
+   // gPad - current pad (TPad) on the canvas
+   // setting log y scale
+   gPad->SetLogy();
+
+   // Graphical adjustments to the canvas: setting canvas margins
+   // To do: improve these margins if needed
+   gPad->SetLeftMargin(0.1);
+   gPad->SetRightMargin(0.05);
+   gPad->SetTopMargin(0.05);
+   gPad->SetBottomMargin(0.1);
+
+   // Graphical adjustments to the histogram axis: setting axis titles offsets
+   // To do: improve these offsets if needed
+   multPT->GetXaxis()->SetTitleOffset(1.);
+   multPT->GetYaxis()->SetTitleOffset(1.2);
+
+   // Drawing the histogram on the current pad
    multPT->Draw();
+
+   // saving canvas as .pdf picture
+   std::filesystem::create_directories("pictures");
+   canv.SaveAs("pictures/cs_pp.pdf");
+   // it can also be saved as .png
+   //canv.SaveAs("output/cs_pp.png");
    
    // The example from above is for pp only
    // To do: after performing MC for p+A, A+B collisions, read the N_{ch} multiplicity and pT vs 
