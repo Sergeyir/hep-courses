@@ -1,3 +1,5 @@
+#pragma once
+
 void AnalyzeOutput()
 {
    // make ROOT not to draw histogram in new window when Draw method is invoked
