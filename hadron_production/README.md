@@ -32,8 +32,8 @@ Your task is to calculate invariant $p_T$ spectra $1/(2\pi p_T) d^2 \sigma / dpT
 
 There are 6 assignment options for the particle species (see [1](#sources) to find MC id of particles, [2](#sources) for particle listings):
 
-1. $\pi^\pm$ 
-2. $\pi^0$ 
+1. $\pi^\pm$
+2. $\pi^0$
 3. $K^\pm$
 4. $(p+\bar{p})/2$
 5. $\varphi(1020)$
@@ -45,12 +45,14 @@ There are 6 assignment options for the particle species (see [1](#sources) to fi
 3 assignment options for collision systems:
 
 1. $p+p$ , $p$+Pb, Pb+Pb, $\sqrt{s_{NN}} = 5.02$ TeV, $\left| \eta \right| < 1$ (LHC). Use NNPDF40_lo_as_01180 for protons, nCTEQ15WZ_208_82 for Pb.
-2. $p+p$, $p$+Au, and $Au+Au$ (both , $\sqrt{s_{NN}} = 200$ GeV, $\left| \eta \right| < 0.5$ (RHIC). Use CT18LO for protons, nCTEQ15WZ_FullNuc_197_79 for Au.
+2. $p+p$, $p$+Au, and Au+Au (both , $\sqrt{s_{NN}} = 200$ GeV, $\left| \eta \right| < 0.5$ (RHIC). Use CT18LO for protons, nCTEQ15WZ_FullNuc_197_79 for Au.
 
 If your task number is 21 then your option is measurements of $pi^0$ in $p+p$, $p$+Pb, and Pb+Pb at $\sqrt{s_{NN}} = 5.02$ TeV
 
-Divide $p+A$ events into $0-20\%$, $20-40\%$, $40-C_{max}\%$ centrality classes (where $C_{max}$ - maximum centrality value for the given collision system), and $A+A$ into $0-10\%$, $10-20\%$, $20-40\%$, $40-60\%$, $60-C_{max}\%$. Use the following sources for $C_{max}$ and $N_{coll}$:
- - [4](#sources) for p+Au@200
+If your taks assingment includes charged pions, kaons, protons and antiprotons, additionally add a check that the particle is final.
+
+Divide $p+A$ events into $0-20\%$, $20-40\%$, $40-C_{max}\%$ centrality classes (where $C_{max}$ - maximum centrality value for the given collision system), and A+A into $0-10\%$, $10-20\%$, $20-40\%$, $40-60\%$, $60-C_{max}\%$. Use the following sources for $C_{max}$ and $N_{coll}$:
+ - [4](#sources) for $p$+Au@200
  - [5](#sources) for Au+Au@200
 
 </details>
@@ -71,6 +73,47 @@ There are many ways to determine centrality in Glauber model [3](#sources). In t
 You can create a 2-D histogram for storing the needed particle $p_T$, and $N_{ch}$ of the event. After determining which $N_{ch}$ intervals lie within every centrality class, you can use these $N_{ch}$ to map the $N_{ch}$ to the centrality class of the event.
 
 </details>
+
+
+<details>
+<summary>How to obtain invariant $p_T$ spectra and cross-section from multiplicity</summary>
+
+To obtain invariant $pT$ spectra for the current $p_T$ bin and $\Delta y$ range use the following equation
+```math
+\frac{1}{2\pi p_T} \frac{d^2N(p_T, \Delta y)}{dp_T dy} = \frac{1}{2\pi p_T} \frac{N(p_T, \Delta y)}{\Delta p_T \Delta y}
+```
+
+Where $\Delta p_T$ - $p_T$ range for the current $p_T$ bin, $N$ - multiplicity for the current $p_T$ bin and $\Delta y$ range.
+
+To obtain invariant $p_T$ cross section use the following equation
+
+```math
+\frac{1}{2\pi p_T} \frac{d^2\sigma}{dp_T dy} = \frac{1}{2\pi p_T} \frac{d^2 N}{dp_T dy} \sigma_{tot}
+```
+
+Where $\sigma_{tot}$ - total cross section
+
+</details>
+
+<details>
+<summary>How to calculate $R_{AB}$ and $R_{CP}$</summary>
+
+Note: calculate $R_{AB}$ for each centrality class while $R_{CP}$ only once using central and peripheral collisions.
+
+```math
+R_{AB} = \frac{1}{N_{coll}^{AB}} \frac{1/(2 \pi p_T) d^2N^{AB} / dp_T dy}{1/ (2 \pi p_T) d^2N^{pp} / dp_T dy}
+```
+
+Where $N_{coll}^{AB}$ - average number of pairwise nucleon-nucleon collisions in A+B collisions for the given centrality class, $1/(2 \pi p_T) d^2N^{AB} / dp_T dy$ - invariant $p_T$ spectra in A+B collisions for the given centrality class, $1/(2 \pi p_T) d^2N^{pp} / dp_T dy$ - invariant $p_T$ spectra in $p+p$ collisions
+
+```math
+R_{CP} = \frac{N_{coll}^{peripheral}}{N_{coll}^{central}} \frac{1/(2 \pi p_T) d^2N^{central} / dp_T dy}{1/ (2 \pi p_T) d^2N^{peripheral} / dp_T dy}
+```
+
+Where $N_{coll}^{central}$, $N_{coll}^{peripheral}$ - number of average pairwise nucleon-nucleon collisions in A+B in central and peripheral centrality classes respectively, $1/(2 \pi p_T) d^2N^{central} / dp_T dy$, $1/(2 \pi p_T) d^2N^{peripheral} / dp_T dy$ - invariant $p_T$ spectra in A+B in central and peripheral centrality classes respectively.
+
+</details>
+
 
 # Sources
 
