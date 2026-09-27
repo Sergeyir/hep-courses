@@ -28,8 +28,7 @@ Your task is to calculate invariant $p_T$ spectra $1/(2\pi p_T) d^2 \sigma / dpT
 2. $R_{AB}$ for different collision systems (for each centrality)
 3. $R_{CP}$ for different collision systems
 
-<details>
-<summary>Assignment options</summary>
+## Assignment options
 
 There are 6 assignment options for the particle species (see [1](#sources) to find MC id of particles, [2](#sources) for particle listings):
 
@@ -55,8 +54,6 @@ If your taks assingment includes charged pions, kaons, protons and antiprotons, 
 Divide $p+A$ events into $0-20\%$, $20-40\%$, $40-C_{max}\%$ centrality classes (where $C_{max}$ - maximum centrality value for the given collision system), and A+A into $0-10\%$, $10-20\%$, $20-40\%$, $40-60\%$, $60-C_{max}\%$. Use the following sources for $C_{max}$ and $N_{coll}$:
  - [4](#sources) for $p$+Au@200
  - [5](#sources) for Au+Au@200
-
-</details>
 
 ## How to determine centrality in pythia
 
@@ -119,8 +116,6 @@ R_{AB} = \frac{N_{coll}^{peripheral}}{N_{coll}^{central}} \frac{1/(2 \pi p_T) d^
 Where 
 - $N_{coll}^{central}$, $N_{coll}^{peripheral}$ - average number of nucleon-nucleon collisions for the central and peripheral centrality classes respectively
 - $1/(2 \pi p_T) d^2 N^{central} / dp_T dy$, $1/(2 \pi p_T) d^2 N^{peripheral} / dp_T dy$ - invariant $p_T$ spectra in A+B collisions in central and peripheral centrality classes respectively
-
-</details>
 
 # Code
 
