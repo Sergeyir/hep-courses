@@ -75,8 +75,7 @@ You can create a 2-D histogram for storing the needed particle $p_T$, and $N_{ch
 
 </details>
 
-<details>
-<summary>How transform multiplicity to the invariant $p_T$ spectra and cross-section</summary>
+## How transform multiplicity to the invariant $p_T$ spectra and cross-section
 
 Invariant $p_T$ spectra can be calculated as follows:
 
@@ -98,10 +97,7 @@ Then invariant $p_T$ cross-section can be calculated as follows:
 
 Where $\sigma_{tot}$ - total cross section of an event
 
-</details>
-
-<details>
-<summary>How to calculate $R_{AB}$ and $R_{CP}$</summary>
+## How to calculate $R_{AB}$ and $R_{CP}$
 
 For the arbitrary incoming nuclei A and B, for the given centrality class $R_{AB}$ can be calculated as follows:
 
