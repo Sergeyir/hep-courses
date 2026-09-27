@@ -3,6 +3,7 @@
 - [Overview](#overview)
 - [Required packages](#required_packages)
 - [Task guide](#task_guide)
+- [Code](#code)
 - [Sources](#sources)
 
 # Overview
@@ -124,6 +125,48 @@ Where
 - $1/(2 \pi p_T) d^2 N^{central} / dp_T dy$, $1/(2 \pi p_T) d^2 N^{peripheral} / dp_T dy$ - invariant $p_T$ spectra in A+B collisions in central and peripheral centrality classes respectively
 
 </details>
+
+# Code
+
+The provided code will not work if you have not installed the [required packages](#required_packages).
+
+You are provided the basic code in C++ and python that you can use as a foundation for completing your task. For generating the data with pythia these are include/RunPythia.hpp and src/RunPythia.cpp for C++, scripts/run_pythia.py for python. For analyzing the generated data these are cling/AnalyzeOutput.cpp for C++ and scripts/analyze_output.py for python respectively. Look for "To do:" in the comments of the code for the hints on the task. Comments also contain useful description and links you should check out.
+
+Example .cmnd file for pythia is provided in input folder. You can use it as a foundation for your task. I recommend using multiple .cmnd files for each collision system and energy so you don't have to change the .cmnd file each time you want to generate events for different pythia parameters.
+
+## Running C++ code
+
+First you must generate Makefile by running cmake, and then you can compile with make:
+
+```sh
+cmake . && make
+```
+
+Then to generate pythia events run as an example (first parameter is the .cmnd file you want to read parameters for pythia from, the second one is number of events you want to generate)
+
+```sh
+./bin/RunPythia input/pp8000.cmnd 100
+```
+
+After generating you can launch the macro for reading and analyzing the generated data and drawing results with ROOT6 CLING ("-q" option here means exit CLING after completion)
+
+```sh
+root -q cling/AnalyzeOutput.cpp
+```
+
+## Running python code
+
+To generate pythia events run as an example ("-i" argument is the .cmnd file you want to read parameters for pythia from, "-n" is number of events you want to generate)
+
+```sh
+./scripts/run_pythia.py -i input/pp8000.cmnd -n 100
+```
+
+After generating you can execute the code for reading and analyzing the generated data and drawing results
+
+```sh
+./scripts/analyze_output.py
+```
 
 # Sources
 
