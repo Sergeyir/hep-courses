@@ -34,7 +34,7 @@ void AnalyzeOutput()
    // To do: add scaling by total cross section and divide each bin by the 
    // bin width to obtain the invariant differential cross section
 
-   // Setting the title
+   // Setting an empty title
    multPT->SetTitle("");
    // More info on tex syntax in ROOT: 
    // https://root.cern.ch/doc/master/classTLatex.html
