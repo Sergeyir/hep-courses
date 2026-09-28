@@ -20,6 +20,9 @@ def analyze_output() :
     # so you need to cast it to the type you have written 
     multPT = ROOT.TH1D(file.Get("pT multiplicity"))
 
+    # See TH1 methods on how to retrieve information from the histogram 
+    # https://root.cern.ch/doc/master/classTH1.html#a3e45a923ef725a537b4f08709aff6aaa
+
     # To scale all contents of the histogram use
     multPT.Scale(1./(2.*numpy.pi))
 
@@ -27,6 +30,11 @@ def analyze_output() :
     for i in range(1, multPT.GetXaxis().GetNbins()) :
         # retrieving ith bin content of the histogram
         binContent = multPT.GetBinContent(i)
+        # See TAxis on how to retrieve information from histogram axis
+        # https://root.cern.ch/doc/master/classTAxis.html
+
+        # retrieving ith bin width
+        binWidth = multPT.GetXaxis().GetBinWidth(i)
         # retrieving ith bin error of the histogram
         binError = multPT.GetBinError(i)
         # setting pT as the center of the ith bin
