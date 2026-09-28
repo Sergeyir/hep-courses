@@ -15,6 +15,9 @@ void AnalyzeOutput()
    // (alternatively you can use c-style cast)
    TH1D *multPT = static_cast<TH1D *>(file->Get("pT multiplicity"));
 
+   // See TH1 methods on how to retrieve information from the histogram 
+   // https://root.cern.ch/doc/master/classTH1.html#a3e45a923ef725a537b4f08709aff6aaa
+
    // To scale all contents of the histogram use
    multPT->Scale(1./(2.*M_PI));
 
@@ -23,6 +26,11 @@ void AnalyzeOutput()
    {
       // retrieving ith bin content of the histogram
       const double binContent = multPT->GetBinContent(i);
+      // See TAxis on how to retrieve information from histogram axis
+      // https://root.cern.ch/doc/master/classTAxis.html
+
+      // retrieving ith bin width
+      const double binWidth = multPT->GetXaxis()->GetBinWidth(i);
       // retrieving ith bin error of the histogram
       const double binError = multPT->GetBinError(i);
       // setting pT as the center of the ith bin
