@@ -77,7 +77,7 @@ You can create a 2-D histogram for storing the needed particle $p_T$, and $N_{ch
 Invariant $p_T$ spectra can be calculated as follows:
 
 ```math
-\frac{1}{2 \pi p_T} \frac{d^2 N(p_T, \Delta y)}{d p_T d_y} = \frac{1}{N_{evt}} \frac{1}{2 \pi p_T} \frac{N(p_T, \Delta y)}{\Delta p_T \Delta y}
+\frac{1}{2 \pi p_T} \frac{d^2 N(p_T, \Delta y)}{d p_T dy} = \frac{1}{N_{evt}} \frac{1}{2 \pi p_T} \frac{N(p_T, \Delta y)}{\Delta p_T \Delta y}
 ```
 
 Where 
