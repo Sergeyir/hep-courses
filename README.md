@@ -40,4 +40,4 @@ Since the project may be updated you may need to pull the changes. This way impl
 ```sh
 rm -r CMakeFiles cmake_install.cmake CMakeCache.txt
 ```
-<\details>
+</details>
