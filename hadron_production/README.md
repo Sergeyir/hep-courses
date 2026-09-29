@@ -24,9 +24,10 @@ ROOT6, LHAPDF6, and PYTHIA8 have to be compiled with python3 for the python inte
 
 Your task is to calculate invariant $p_T$ spectra $1/(2\pi p_T) d^2 \sigma / dpT dy$ in $p+p$, $p$+A, and A+B (where A, B - generalized notation for nuclei) and nuclear modification factors $R_{pA}$, $R_{AB}$, $R_{CP}$. The output of your task must be the following:
 
-1. $1/(2\pi p_T) d^2 \sigma / dpT dy$ for different centralities on the same picture (for each collision system)
-2. $R_{AB}$ for different collision systems (for each centrality)
-3. $R_{CP}$ for different collision systems
+1. $1/(2\pi p_T) d^2 \sigma / dpT dy$ for all centralities on the same picture separately for p+A and A+B (2 pictures)
+2. $1/(2\pi p_T) d^2 \sigma / dpT dy$ in minimum bias for p+p, $p$+A, A+B collision systems on the same picture (1 picture)
+3. $R_{AB}$ for all centralities on the same picture separately for p+A and A+B (2 pictures)
+4. $R_{CP}$ for p+A and A+B collision systems on the same picture (1 picture)
 
 ## Assignment options
 
@@ -50,6 +51,8 @@ There are 6 assignment options for the particle species (see [1](#sources) to fi
 If your task number is 21 then your option is measurements of $pi^0$ in $p+p$, $p$+Pb, and Pb+Pb at $\sqrt{s_{NN}} = 5.02$ TeV
 
 If your taks assingment includes charged pions, kaons, protons and antiprotons, additionally add a check that the particle is final.
+
+If your particle has an antiparticle distinct from itself, measure (particle + antiparticle)/2 production.
 
 Divide $p+A$ events into $0-20\%$, $20-40\%$, $40-C_{max}\%$ centrality classes (where $C_{max}$ - maximum centrality value for the given collision system), and A+A into $0-10\%$, $10-20\%$, $20-40\%$, $40-60\%$, $60-C_{max}\%$. Use the following sources for $C_{max}$ and $N_{coll}$:
  - [4](#sources) for $p$+Au@200
