@@ -71,9 +71,9 @@ There are 3 assignment options for $s_{\sqrt{NN}}$ and $\hat{p}_{T}^{min}$
 6 assignment options for PDF sets (LO and NLO respectively):
 
 1. NNPDF31_lo_as_0118 and NNPDF31_nlo_as_0118
-2. NNPDF40_lo_as_01175 and NNPDF40_nlo_as_01175
+2. CT18LO and CT18NLO
 3. NNPDF40_lo_as_01180 and NNPDF40_nlo_as_01180
-4. NNPDF40_lo_as_01185 and NNPDF40_nlo_as_01185
+4. NNPDF31_lo_as_0130 and NNPDF31_nlo_as_0120
 
 And 2 assignment options for the pseudorapidity region limitation
 
