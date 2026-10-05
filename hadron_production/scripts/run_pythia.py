@@ -23,7 +23,7 @@ def run_pythia(input_file_name : str, n_events : int) -> int :
     # random generator seed; main can be changed to have seed argument. Seed is needed if you intend to perform calculations on multiple threads via bash scripts
     seed = 1;
     # setting the random seed
-    pythia.readString("Random:seed = " + str(seed));
+    pythia.readString("Random:seed = " + str(seed))
 
     # To do: determine whether HardQCD and/or SoftQCD needed in this analysis
     # Hint: look at SoftQCD:nonDiffractive definition (remind: you perform a minimum bias study)
@@ -66,7 +66,7 @@ def run_pythia(input_file_name : str, n_events : int) -> int :
     # 2-D histograms: https://root.cern.ch/doc/master/classTH2.html
 
     # example: pT multiplicity
-    hist_pt = ROOT.TH1D("pT multiplicity", "", 200, 0., 25.);
+    hist_pt = ROOT.TH1D("pT multiplicity", "", 200, 0., 25.)
 
     # iterating over all events
     for i in range(n_events) :
@@ -100,12 +100,12 @@ def run_pythia(input_file_name : str, n_events : int) -> int :
             if (i == 0) :
                 print(pythia.event[j].id())
 
-            hist_pt.Fill(pythia.event[j].pT(), eventWeight);
+            hist_pt.Fill(pythia.event[j].pT(), eventWeight)
 
     # printing cross section (Can you deduce what the unit of measurement for this quantity is?)
     print(pythia.infoPython().sigmaGen())
 
-    hist_pt.Write();
+    hist_pt.Write()
 
     # closing file; this is not required in the current case, however in a general case
     # it is better to close files when you are done working with them 
