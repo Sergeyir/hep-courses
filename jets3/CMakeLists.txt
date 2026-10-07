@@ -75,7 +75,7 @@ endif()
 
 if (DEFINED ENV{FASTJET3_PATH} AND EXISTS "$ENV{FASTJET3_PATH}/bin/fastjet-config")
    message(STATUS "FASTJET3 path found")
-   set(FASTJET_PATH $ENV{FASTJET3_PATH})
+   set(FASTJET3_PATH $ENV{FASTJET3_PATH})
 else()
    find_program(FASTJET_CONFIG NAMES fastjet-config)
    if (FASTJET_CONFIG)
