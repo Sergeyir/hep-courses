@@ -48,7 +48,7 @@ There are 6 assignment options for the particle species (see [1](#sources) to fi
 1. $p+p$ , $p$+Pb, Pb+Pb, $\sqrt{s_{NN}} = 5.02$ TeV, $\left| \eta \right| < 1$ (LHC). Use NNPDF40_lo_as_01180 for protons, nCTEQ15WZ_208_82 for Pb.
 2. $p+p$, $p$+Au, and Au+Au (both , $\sqrt{s_{NN}} = 200$ GeV, $\left| \eta \right| < 0.5$ (RHIC). Use CT18LO for protons, nCTEQ15WZ_FullNuc_197_79 for Au.
 
-If your task number is 21 then your option is measurements of $pi^0$ in $p+p$, $p$+Pb, and Pb+Pb at $\sqrt{s_{NN}} = 5.02$ TeV
+If your task number is 21 then your option is measurements of $\pi^0$ in $p+p$, $p$+Pb, and Pb+Pb at $\sqrt{s_{NN}} = 5.02$ TeV
 
 If your taks assingment includes charged pions, kaons, protons and antiprotons, additionally add a check that the particle is final.
 
