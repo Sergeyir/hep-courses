@@ -168,6 +168,6 @@ After generating you can execute the code for reading and analyzing the generate
 1. [Monte Carlo numbering scheme](https://pdg.lbl.gov/2007/reviews/montecarlorpp.pdf)
 2. [F. Takahashi et al. (Particle Data Group). Int. J. Mod. Phys. A 41 , 2630011 (2026)](https://pdg.lbl.gov/2026/listings/contents_listings.html)
 3. [Michael L. Miller, Klaus Reygers, Stephen J. Sanders, Peter Steinberg. 2007. Glauber Modeling in High-Energy Nuclear Collisions. Annual Review of Nuclear and Particle Science 57:205-243.](https://arxiv.org/abs/nucl-ex/0701025)
-4. [A. Adare et. al. (PHENIX collaboration). Spectra and ratios of identified particles in Au+Au and d+Au collisions at $\sqrt{s_{NN}}=200$ GeV. Phys. Rev. C 88, 024906 (2013)](https://arxiv.org/abs/1304.3410)
-5. [A. Adare et. al. (PHENIX collaboration). Systematic study of nuclear effects in $p$+Al, $p$+Au, $d$+Au, and $^3$He+Au collisions at $\sqrt{s_{NN}} = 200$ GeV using $\pi^0$ production. Phys. Rev. C 88, 024906 (2013)](https://arxiv.org/abs/2111.05756v1)
+4. [A. Adare et. al. (PHENIX collaboration). Systematic study of nuclear effects in $p$+Al, $p$+Au, $d$+Au, and $^3$He+Au collisions at $\sqrt{s_{NN}} = 200$ GeV using $\pi^0$ production. Phys. Rev. C 88, 024906 (2013)](https://arxiv.org/abs/2111.05756v1)
+5. [A. Adare et. al. (PHENIX collaboration). Spectra and ratios of identified particles in Au+Au and d+Au collisions at $\sqrt{s_{NN}}=200$ GeV. Phys. Rev. C 88, 024906 (2013)](https://arxiv.org/abs/1304.3410)
 6. [Constantin Loizides (ORNL), Jason Kamin (UiC), David d'Enterria (CERN). Improved Monte Carlo Glauber predictions at present and future nuclear colliders. Phys.Rev. C97 (2018) 054910; Phys.Rev. C99 (2019) 019901 (Erratum)](https://arxiv.org/abs/1710.07098)
