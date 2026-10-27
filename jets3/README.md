@@ -228,6 +228,8 @@ mg5_aMC input/run_pp7_LO.mg5
 
 After finishing calculations, you may find more detail on MadGraph settings can be found in .dat files located in mg5_pp_jj_LO/Cards/ (for the purpose of this work run_card.dat is essential). You can also check in run_card.dat whether parameters were set correctly.
 
+Advice: to avoid re-compiling the same process you can comment/remove "generate" and "output" lines in your .mg5 parameters file. But in this case you have to keep track of runs as they will not be cleared.
+
 ### Reading MadGraph generated events
 
 As for our example file (run_pp7_LO.mg5) MadGraph writes event information in .lhe format in mg5_pp_jj_LO/Events/run_NN/unweighted_events.lhe.gz, where NN - the index of the run (for you it would probably be 01). Extract it with gunzip first (replace NN with your run index):
