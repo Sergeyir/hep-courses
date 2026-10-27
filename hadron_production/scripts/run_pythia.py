@@ -117,7 +117,7 @@ def run_pythia(input_file_name : str, n_events : int) -> int :
 if __name__ == "__main__" :
     # parsing input arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("input", type=str, help=".yaml file name located in "\
+    parser.add_argument("input", type=str, help=".cmnd file name located in "\
                                                 "input (e.g. input/pp8000.cmnd")
     parser.add_argument("nevents", type=int, help="number of events")
 
