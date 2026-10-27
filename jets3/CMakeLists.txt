@@ -105,10 +105,40 @@ if (DEFINED FASTJET3_PATH)
    string(STRIP ${FASTJET_LIB_FLAGS} FASTJET_LIB_FLAGS)
 endif()
 
-set(CMAKE_SHARED_LINKER_FLAGS "${ROOT_LIB_FLAGS} ${PYTHIA_LIB_FLAGS} ${LHAPDF_LIB_FLAGS} ${FASTJET_LIB_FLAGS}")
-set(CMAKE_EXE_LINKER_FLAGS "${ROOT_LIB_FLAGS} ${PYTHIA_LIB_FLAGS} ${LHAPDF_LIB_FLAGS} ${FASTJET_LIB_FLAGS}")
+if (DEFINED ENV{HEPMC3_PATH} AND EXISTS "$ENV{HEPMC3_PATH}/outputs/bin/HepMC3-config")
+   message(STATUS "HepMC3 path found: $ENV{HEPMC3_PATH}/outputs")
+   set(HEPMC3_PATH "$ENV{HEPMC3_PATH}/outputs")
+   # if HepMC3 is compiled in $HEPMC3_PATH/outputs directory, HepMC3-config --incliudedirs 
+   # returns incorrect destination, therefore manually setting include dirs for this case
+   set(HEPMC3_INCLUDE_DIRS "$ENV{HEPMC3_PATH}/include")
+elseif(DEFINED ENV{HEPMC3_PATH} AND EXISTS "$ENV{HEPMC3_PATH}/bin/HepMC3-config")
+   message(STATUS "HepMC3 path found: $ENV{HEPMC3_PATH}")
+   set(HEPMC3_PATH "$ENV{HEPMC3_PATH}")
+else()
+   find_program(HEPMC3_CONFIG NAMES HepMC3-config)
+   if (HEPMC3_CONFIG)
+      execute_process(COMMAND ${HEPMC3_CONFIG} --prefix OUTPUT_VARIABLE HEPMC3_PATH)
+      string(STRIP ${HEPMC3_PATH} HEPMC3_PATH)
+      message(STATUS "HepMC3 found via HepMC3-config in ${HEPMC3_PATH}")
+   else()
+      message(FATAL_ERROR "HEPMC3 not found: install it manually and set HEPMC3_PATH")
+   endif()
+endif()
+if (DEFINED HEPMC3_PATH)
+   set(HEPMC3_CMD "${HEPMC3_PATH}/bin/HepMC3-config")
+   execute_process(COMMAND ${HEPMC3_CMD} --libs OUTPUT_VARIABLE HEPMC3_LIB_FLAGS)
+   string(STRIP ${HEPMC3_LIB_FLAGS} HEPMC3_LIB_FLAGS)
+   if (NOT DEFINED HEPMC3_INCLUDE_DIRS)
+      execute_process(COMMAND ${HEPMC3_CMD} --includedirs OUTPUT_VARIABLE HEPMC3_INCLUDE_DIRS)
+      string(STRIP ${HEPMC3_INCLUDE_DIRS} HEPMC3_INCLUDE_DIRS)
+   endif()
+endif()
 
-include_directories(${CMAKE_SOURCE_DIR}/include ${ROOT_INCLUDE_DIRS} ${PYTHIA_INCLUDE_DIRS} ${LHAPDF_INCLUDE_DIRS} ${FASTJET_INCLUDE_DIRS})
+set(CMAKE_EXE_LINKER_FLAGS "${ROOT_LIB_FLAGS} ${PYTHIA_LIB_FLAGS} ${LHAPDF_LIB_FLAGS} ${FASTJET_LIB_FLAGS} ${FASTJET_LIB_FLAGS} ${HEPMC3_LIB_FLAGS}")
+# uncomment if you need to compile libraries that depend on these packages
+#set(CMAKE_SHARED_LINKER_FLAGS "${ROOT_LIB_FLAGS} ${PYTHIA_LIB_FLAGS} ${LHAPDF_LIB_FLAGS} ${FASTJET_LIB_FLAGS} ${HEPMC3_LIB_FLAGS}")
+
+include_directories(${CMAKE_SOURCE_DIR}/include ${ROOT_INCLUDE_DIRS} ${PYTHIA_INCLUDE_DIRS} ${LHAPDF_INCLUDE_DIRS} ${FASTJET_INCLUDE_DIRS} ${HEPMC3_INCLUDE_DIRS})
 
 add_subdirectory(yaml-cpp EXCLUDE_FROM_ALL)
 
@@ -116,9 +146,12 @@ link_libraries(yaml-cpp)
 
 add_executable(RunPythia ${CMAKE_SOURCE_DIR}/src/RunPythia.cpp)
 add_executable(RunAnalytic ${CMAKE_SOURCE_DIR}/src/RunAnalytic.cpp)
+add_executable(ReadMG5LHE ${CMAKE_SOURCE_DIR}/src/ReadMG5LHE.cpp)
 
+# for older versions of cmake
 if (CMAKE_VERSION LESS 4.0)
-   string(STRIP ${CMAKE_SHARED_LINKER_FLAGS} CMAKE_EXE_LINKER_FLAGS)
+   # uncomment if you need to compile libraries that depend on these packages
+   #string(STRIP ${CMAKE_SHARED_LINKER_FLAGS} CMAKE_EXE_LINKER_FLAGS)
    string(STRIP ${CMAKE_EXE_LINKER_FLAGS} CMAKE_EXE_LINKER_FLAGS)
    target_link_libraries(RunPythia PRIVATE ${CMAKE_EXE_LINKER_FLAGS})
    target_link_libraries(RunAnalytic PRIVATE ${CMAKE_EXE_LINKER_FLAGS})
