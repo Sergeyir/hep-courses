@@ -158,10 +158,10 @@ root -q cling/AnalyzeOutput.cpp
 
 ## Running python code
 
-To generate pythia events run as an example ("-i" argument is the .cmnd file you want to read parameters for pythia from, "-n" is number of events you want to generate)
+To generate pythia events run as an example (1st argument is the .cmnd file you want to read parameters for pythia from, 2nd is number of events you want to generate)
 
 ```sh
-./scripts/run_pythia.py -i input/pp8000.cmnd -n 100
+./scripts/run_pythia.py input/pp8000.cmnd 100
 ```
 
 After generating you can execute the code for reading and analyzing the generated data and drawing results
