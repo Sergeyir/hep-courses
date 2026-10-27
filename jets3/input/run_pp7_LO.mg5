@@ -1,0 +1,18 @@
+# setting the process
+generate p p > j j
+# setting the output directory
+output mg5_pp_jj_LO
+# launching calculations and setting parameters
+launch mg5_pp_jj_LO
+# incoming beam 1 energy
+set ebeam1 100
+# incoming beam 2 energy
+set ebeam2 100
+# NNPDF31_lo_as_0118 (use "lhapdf show name_of_pdf_set" to display the information including id)
+set lhaid 315000
+# pTHatMin for both outgoing partons
+set ptj 10
+# disabling systematic estimation (saves time)
+set use_syst False
+# number of events
+set nevents 10000
