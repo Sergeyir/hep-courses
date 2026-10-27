@@ -141,21 +141,12 @@ def run_pythia(input_file_name : str, n_events : int) -> int :
 if __name__ == "__main__" :
     # parsing input arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("-i", "--input", type=str)
-    parser.add_argument("-n", "--nevents", type=int)
+    parser.add_argument("input", type=str, help=".yaml file name located in "\
+                                                "input (e.g. input/pp7TeV.yaml")
+    parser.add_argument("nevents", type=int, help="number of events")
 
     args = parser.parse_args()
     input_file_name = args.input
     n_events = args.nevents
-
-    # requiring for the input file to be passed
-    if not input_file_name :
-        print('\033[1;31mError:\033[0m input file must be specified; use option -i or --input')
-        sys(exit(1))
-
-    # requiring for the number of events to be passed
-    if not n_events :
-        print('\033[1;31mError:\033[0m number of events must be specified; use option -n or --nevents')
-        sys(exit(1))
 
     sys.exit(run_pythia(input_file_name, n_events))
