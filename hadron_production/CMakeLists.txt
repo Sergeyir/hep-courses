@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.0...4.0 FATAL_ERROR)
 
 project(HardProcessesLO)
 
-option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
+# uncomment if you need to build shared libs
+#option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 
 set(CMAKE_CXX_FLAGS "-Wall -Wpedantic -pipe -O2 -g")
 set(CMAKE_CXX_STANDARD 17)
@@ -85,7 +86,8 @@ if (DEFINED PYTHIA8_PATH)
    string(STRIP ${PYTHIA_LIB_FLAGS} PYTHIA_LIB_FLAGS)
 endif()
 
-set(CMAKE_SHARED_LINKER_FLAGS "${ROOT_LIB_FLAGS} ${PYTHIA_LIB_FLAGS} ${LHAPDF_LIB_FLAGS}")
+# uncomment if you need to build shared libs that depend on these packages
+#set(CMAKE_SHARED_LINKER_FLAGS "${ROOT_LIB_FLAGS} ${PYTHIA_LIB_FLAGS} ${LHAPDF_LIB_FLAGS}")
 set(CMAKE_EXE_LINKER_FLAGS "${ROOT_LIB_FLAGS} ${PYTHIA_LIB_FLAGS} ${LHAPDF_LIB_FLAGS}")
 
 include_directories(${CMAKE_SOURCE_DIR}/include ${ROOT_INCLUDE_DIRS} ${PYTHIA_INCLUDE_DIRS} ${LHAPDF_INCLUDE_DIRS})
@@ -93,7 +95,8 @@ include_directories(${CMAKE_SOURCE_DIR}/include ${ROOT_INCLUDE_DIRS} ${PYTHIA_IN
 add_executable(RunPythia ${CMAKE_SOURCE_DIR}/src/RunPythia.cpp)
 
 if (CMAKE_VERSION LESS 4.0)
-   string(STRIP ${CMAKE_SHARED_LINKER_FLAGS} CMAKE_EXE_LINKER_FLAGS)
+   # uncomment if you need to build shared libs that depend on these packages
+   #string(STRIP ${CMAKE_SHARED_LINKER_FLAGS} CMAKE_EXE_LINKER_FLAGS)
    string(STRIP ${CMAKE_EXE_LINKER_FLAGS} CMAKE_EXE_LINKER_FLAGS)
    target_link_libraries(RunPythia PRIVATE ${CMAKE_EXE_LINKER_FLAGS})
 endif()
