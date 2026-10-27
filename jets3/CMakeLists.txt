@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.0...4.0 FATAL_ERROR)
 
 project(HardProcessesLO)
 
-option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
+# uncomment if you need to compile shared libraries
+#option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 
 set(CMAKE_CXX_FLAGS "-Wall -Wpedantic -pipe -O2 -g")
 set(CMAKE_CXX_STANDARD 17)
