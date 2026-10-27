@@ -66,7 +66,7 @@ It is recommended to save the calculated cross sections in .root files, so that 
 There are 3 assignment options for $s_{\sqrt{NN}}$ and $\hat{p}_{T}^{min}$
 
 1. $s_{\sqrt{NN}} = 2.36$ TeV, $\hat{p}_{T}^{min}$ = 15 GeV
-2. $s_{\sqrt{NN}} = 7$ TeV, $\hat{p}_{T}^{min}$ = 25 GeV
+2. $s_{\sqrt{NN}} = 7$ TeV, $\hat{p}_{T}^{min}$ = 20 GeV
 3. $s_{\sqrt{NN}} = 13.6$ TeV, $\hat{p}_{T}^{min}$ = 25 GeV
 
 6 assignment options for PDF sets (LO and NLO respectively):
@@ -129,13 +129,7 @@ bin/RunPythia input/pp7TeV.yaml 1000
 Run the python script showing simple example to generate 1000 events with pythia using pythia specification from file input/pp7TeV.yaml as an example. You can change input file and number of events if needed
 
 ```sh
-python scripts/run_pythia.py -i input/pp7TeV.yaml -n 1000
-```
-
-Or alternatively 
-
-```sh
-./scripts/run_pythia.py -i input/pp7TeV.yaml -n 1000
+python scripts/run_pythia.py input/pp7TeV.yaml 1000
 ```
 
 </details>
@@ -195,16 +189,10 @@ Where the first argument provides the name of the file with all important specif
 Check the code srcipts/run_analytic.py and finish it. After adding updates you can run it with
 
 ```sh
-python scripts/calcylate_analytic.py -i input/pp7TeV.yaml -n 100
+python scripts/calcylate_analytic.py input/pp7TeV.yaml 100
 ```
 
-Or alternatively 
-
-```sh
-./scripts/run_pythia.py -i input/pp7TeV.yaml -n 1000
-```
-
-Where the "-i" argument provides the name of the file with all important specifications, and "-n" provides the number of integration steps for Monte Carlo integration.
+Where the 1st argument provides the name of the file with all important specifications, and the 2nd one provides the number of integration steps for Monte Carlo integration.
 </details>
 
 Lower details for $d \sigma / d$ $\hat{t}$ are described. Similarly, $d \sigma / d \Delta y$ can be calculated after minor adjustments.
@@ -228,7 +216,49 @@ $d \sigma / dp_T$ can be obtained by estimating $\Delta y_1$ as bin rapidity cov
 
 ## MadGraph NLO
 
-Instructions will appear soon
+### Running MadGraph
+
+As an example file for launching 10000 events with MadGraph is provided - input/run_pp7_LO.mg5. Inspect it and change the following fields to match the task: ebeam1, ebeam2, lhaid, ptj. You may first try to caclulate the cross-sections for LO to check whether your code works as intended (should provide the same result as Pythia8), and then turn on NLO calculations (by default calculations are performed at LO).
+
+To run MadGraph using the provided input file, use the following command
+
+```sh
+mg5_aMC input/run_pp7_LO.mg5
+```
+
+After finishing calculations, you may find more detail on MadGraph settings can be found in .dat files located in mg5_pp_jj_LO/Cards/ (for the purpose of this work run_card.dat is essential). You can also check in run_card.dat whether parameters were set correctly.
+
+### Reading MadGraph generated events
+
+As for our example file (run_pp7_LO.mg5) MadGraph writes event information in .lhe format in mg5_pp_jj_LO/Events/run_NN/unweighted_events.lhe.gz, where NN - the index of the run (for you it would probably be 01). Extract it with gunzip first (replace NN with your run index):
+
+```sh
+gunzip mg5_pp_jj_LO/Events/run_NN/unweighted_events.lhe.gz
+```
+
+Which will extract the data into mg5_pp_jj_LO/Events/run_NN/unweighted_events.lhe. Then you can use provided simple code to read .lhe format using HepMC3. When reading events you can perform very similar procedure you perform with Pythia events.
+
+<details>
+<summary>Reading .lhe with C++</summary>
+
+Run the compiled executable to read the .lhe file. The first argument is the .lhe file you will read information from, the second one is the file you will write histograms into (the code example does not create this file, you have to implement it yourself).
+
+```sh
+bin/ReadMG5LHE mg5_pp_jj_LO/Events/run_NN/unweighted_events.lhe.gz output/test.root
+```
+
+</details>
+
+<details>
+<summary>Reading .lhe with python</summary>
+
+Run the compiled executable to read the .lhe file. The first argument is the .lhe file you will read information from, the second one is the file you will write histograms into (the code example does not create this file, you have to implement it yourself).
+
+```sh
+scripts/read_mg5_lhe.py mg5_pp_jj_LO/Events/run_NN/unweighted_events.lhe output/test.root
+```
+
+</details>
 
 # Sources
 
