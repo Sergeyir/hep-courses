@@ -86,54 +86,7 @@ def get_x2(pT: float, sqrtSNN: float, y1: float, y2: float) -> float:
     """
     return 0.5 
 
-def get_dsigma_d_deltay(delta_y: float, sqrtSNN: float, absYMax: float, pTHatMin: float) -> Tuple[float, float]:
-    """
-    This is just a functiont prototype The intended purpose of which is to show how to 
-    randomly choose pT. If the pT is chosen from the uniform distribution the cross section
-    values will jump to much from point to point due to significant contribution coming from
-    low pT region (with finite integration calculation steps only few points on this range will be
-    selected which results in some points having larger contribution from low pT that the other
-    thus the "jumpiness" of a histogram points arises). 
-    """
-
-    normalization = 0.
-    result = 0.
-
-    for _ in range(number_of_integration_steps):
-        # To do : add correct formula for tau
-        """
-        This is one way to achieve this: to distrubute pT in a way so that 
-        there are many more points on low pT
-        """
-        tau = 1.
-        pT = pTHatMin + rnd.Exp(tau)
-        """
-        In order for the TRandom to work correctly and fast tau needs to be defined so that
-        int_{pTHatMIn}^{pTMax} e^{-x/tau) dx = 1
-        Where pTMax - maximum kinematicaly possible pT value
-        Exponent is chosen since it resembles the form of dSigma/dpT. The closer the resemblance - 
-        the better error estimation is performed for finite number of integration steps
-        """
-
-        """
-        But since the distribution is non-uniform the normalization 
-        needs to be explicitly calculated as sum of weig
-        """
-        normalization += math.exp(-(pT - pTHatMin)/tau) # here exp(-pT/tau) is weight
-
-        # dummy value
-        result += 1e-6
-
-    # To do: add normalization by integration volume
-    """
-    To do: check for other sources of uncertainties and propagate 
-    them with this error if you find any
-    """
-    err = result/sqrt(normalization)
-
-    return result/normalization, err
-
-def calculate_analytic(input_file_name : str) -> int:
+def calculate_analytic(input_file_name : str, nsteps : int) -> int:
     global pdf, number_of_integration_steps, rng
 
     with open(input_file_name, "r") as f:
@@ -161,27 +114,16 @@ def calculate_analytic(input_file_name : str) -> int:
     
     return 0
 
-def main() :
+if __name__ == "__main__":
     global number_of_integration_steps
     # parsing input arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("-i", "--input", type=str)
-    parser.add_argument("-n", "--nsteps", type=int)
+    parser.add_argument("input", type=str, help=".yaml file name located in input "\
+                                                  "(e.g. input/pp7TeV.yaml")
+    parser.add_argument("nsteps", type=int, help="number of integration steps")
 
     args = parser.parse_args()
     input_file_name = args.input
-    number_of_integration_steps = args.nsteps
+    nsteps = args.nsteps
 
-    if not input_file_name :
-        print('\033[1;31mError:\033[0m input file must be specified; use option -i or --input')
-        sys(exit(1))
-
-    if number_of_integration_steps == 0 :
-        print('\033[1;31mError:\033[0m number of integration steps must be specified; '\
-              'use option -n or --nsteps')
-        sys(exit(1))
-
-    sys.exit(calculate_analytic(input_file_name))
-
-if __name__ == "__main__":
-    main()
+    sys.exit(calculate_analytic(input_file_name, nsteps))
