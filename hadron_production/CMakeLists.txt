@@ -5,7 +5,7 @@ project(HardProcessesLO)
 # uncomment if you need to build shared libs
 #option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 
-set(CMAKE_CXX_FLAGS "-Wall -Wpedantic -pipe -O2 -g")
+set(CMAKE_CXX_FLAGS "-Wall -Wpedantic -pipe -O2")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
