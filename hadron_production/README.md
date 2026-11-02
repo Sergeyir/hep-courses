@@ -174,6 +174,8 @@ After generating you can execute the code for reading and analyzing the generate
 
 Use the Eq. 12 and Eq. 14 from [7](#sources) for exponential and Levy functions respectively. The form of Levy function is simplified for central rapidity region (the general form can be found in [8](#sources)).
 
+To avoid invariant $p_T$ spectra overlap (which can obstruct some points and fits by other points and fits), scale spectra for each centrality by the $10^{-i}$ (or alternatively $10^{i}$), where $i$ - centrality index. For example, scaling of $1, 10^{-1}, 10^{-2}, 10^{-3}$ can be applied to the spectra in 0-20\%, 20-40\%, 40-60\%, 60-100\% centraliity classes respectively.
+
 # Sources
 
 1. [Monte Carlo numbering scheme](https://pdg.lbl.gov/2007/reviews/montecarlorpp.pdf)
