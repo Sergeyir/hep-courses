@@ -8,6 +8,8 @@ launch mg5_pp_jj_LO
 set ebeam1 100
 # incoming beam 2 energy
 set ebeam2 100
+# tells MadGraph to use lhapdf
+set pdlabel lhapdf
 # NNPDF31_lo_as_0118 (use "lhapdf show name_of_pdf_set" to display the information including id)
 set lhaid 315000
 # pTHatMin for both outgoing partons
