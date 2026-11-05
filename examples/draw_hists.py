@@ -85,5 +85,5 @@ legend.AddEntry(hist2, "gaus 2", "L")
 # drawing the legend
 legend.Draw()
 
-print("Check out the pictrue this macro produced:")
+print("Check out the picture this macro produced:")
 canv.SaveAs("Hists.pdf")
