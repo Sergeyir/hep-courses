@@ -5,4 +5,5 @@ This directory contains simple code for performing basic tasks. To execute code 
 | Description                  | C++ code              | python code         |
 |------------------------------|-----------------------|---------------------|
 | Drawing multiple histograms  | DrawHists.cpp         | draw_hists.py       |
+| Performing approximations    | FitHist.cpp           | fit_hist.py         |
 | N-dimensional integration    | NDimIntegration.cpp   | ndim_integration.py |
