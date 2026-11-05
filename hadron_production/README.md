@@ -66,6 +66,10 @@ Divide $p+A$ events into $0-20\%$, $20-40\%$, $40-C_{max}\%$ centrality classes 
  - [5](#sources) for Au+Au@200
  - [6](#sources) for (p+Pb and Pb+Pb)@5020
 
+# Part 1
+
+For basic information about histograms you can see [ROOT histogram basic manual](https://root.cern/manual/histograms/). Examples of drawing histograms relevant for this task is available at ../examples (DrawHists.cpp and draw_hists.py). More advanced examples can be found at [ROOT histogram tutorials](https://root.cern/doc/master/group__tutorial__hist.html). Additionally the code presented for this task contains concise explanation and calss references links.
+
 ## How to determine centrality in pythia
 
 There are many ways to determine centrality in Glauber model [3](#sources). In this work we use one of the simplest cases: centrality is determined by measuring charged particle multiplicity in pseudorapidity regions: $3.0 < \left| \eta \right| < 3.9$ (PHENIX) for RHIC, $2.8 < \left| \eta \right| < 5.1$ (ALICE) for LHC. This can be achieved using the following algorithm:
@@ -170,11 +174,15 @@ After generating you can execute the code for reading and analyzing the generate
 ./scripts/analyze_output.py
 ```
 
-## Part 2: approximations
+# Part 2: approximations
 
 Use the Eq. 12 and Eq. 14 from [7](#sources) for exponential and Levy functions respectively. The form of Levy function is simplified for central rapidity region (the general form can be found in [8](#sources)).
 
 To avoid invariant $p_T$ spectra overlap (which can obstruct some points and fits by other points and fits), scale spectra for each centrality by the $10^{-i}$ (or alternatively $10^{i}$), where $i$ - centrality index. For example, scaling of $1, 10^{-1}, 10^{-2}, 10^{-3}$ can be applied to the spectra in 0-20\%, 20-40\%, 40-60\%, 60-100\% centraliity classes respectively.
+
+Since pythia8 generated spectra has a maximum roughly at $p_T \approx m_0/2$ set the range of exponential approximation starting at this point. Double check the starting value of the range for you particle.
+
+See ../examples/FitHist.cpp (C++) or ../examples/fit_hist.py (python) for the examples of approximation of histograms.
 
 # Sources
 
