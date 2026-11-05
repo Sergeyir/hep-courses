@@ -96,6 +96,6 @@ void DrawHists()
    // drawing the legend
    legend.Draw();
 
-   std::cout << "Check out the pictrue this macro produced:" << std::endl;
+   std::cout << "Check out the picture this macro produced:" << std::endl;
    canv.SaveAs("Hists.pdf");
 }
