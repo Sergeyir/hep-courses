@@ -76,10 +76,12 @@ There are 3 assignment options for $s_{\sqrt{NN}}$ and $\hat{p}_{T}^{min}$
 3. NNPDF40_lo_as_01180 and NNPDF40_nlo_as_01180
 4. NNPDF31_lo_as_0130 and NNPDF31_nlo_as_0120
 
-And 2 assignment options for the pseudorapidity region limitation
+And 2 assignment options for the pseudorapidity region limitation ($d \sigma / d p_T$ only)
 
 1. $\left| \eta \right| < 0.5$
 2. $\left| \eta \right| < 1$
+
+For $d \sigma / d \Delta y$ use $\left| \eta \right| < 10$)
 
 If your task number is 321 then your option is $s_{\sqrt{NN}} = 13.6$ TeV, NNPDF40_lo_as_01175 for LO and NNPDF40_nlo_as_01175 for NLO, $\left| \eta \right| < 0.5$.
 
