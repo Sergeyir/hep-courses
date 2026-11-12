@@ -31,7 +31,7 @@ Your task is to calculate invariant $p_T$ spectra $1/(2\pi p_T) d^2 \sigma / dpT
 4. $R_{CP}$ for p+A and A+B collision systems on the same picture (1 picture)
 
 ## Part 2
-1. $1/(2\pi p_T) d^2 \sigma / dpT dy$ for all centralities on the same picture separately for p+p (minimum bias only), p+A, and A+B with Levy and exponential approximations (3 pictures)
+1. $1/(2\pi p_T) d^2 \sigma / dpT dy$ for all centralities on the same picture separately for p+p (minimum bias only), p+A, and A+B with Levy and exponential approximations (3 pictures or alternatively 6 pictures with Levy and exponential approximations on separate pictures)
 2. $dN/dy$ vs $N_{coll}$ for all collision systems on the same picture
 3. $<p_T>$ vs $N_{coll}$ for all collision systems on the same picture
 4. $T$ vs $N_{coll}$ for all collision systems on the same picture
