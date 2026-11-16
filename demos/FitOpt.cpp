@@ -19,9 +19,9 @@ TGraph *grCurrentParPoint = new TGraph();
 // graph for fit
 TGraphErrors *gr = new TGraphErrors();
 // histogram in parametric space displaying chi2 values
-TH2D *chi2Hist = new TH2D("chi2", "#chi^{2}", 200, -10., 10., 200, -4., 6.); 
+TH2D *chi2Hist = new TH2D("chi2", "#chi^{2}", 200, -10., 10., 200, -10., 10.); 
 // fit of gr (displayed for current parametric point)
-TF1 *fit = new TF1("fit", "expo");
+TF1 *fit = new TF1("fit", "pol1");
 
 void FitOpt()
 {
@@ -34,14 +34,19 @@ void FitOpt()
    grCurrentParPoint->SetMarkerSize(3);
    grCurrentParPoint->SetMarkerColorAlpha(kRed, 0.8);
 
-   gr->AddPoint(1., 1.);
-   gr->SetPointError(0, 0., 0.1);
+   TRandom rnd;
 
-   gr->AddPoint(4., 3.);
-   gr->SetPointError(1, 0., 0.1);
+   rnd.SetSeed(1);
 
-   gr->AddPoint(5., 5.);
-   gr->SetPointError(2, 0., 0.1);
+   int nPoints = 20;
+   for (int i = 0; i < nPoints; i++)
+   {
+      const double val = static_cast<double>(i)/static_cast<double>(nPoints)*5.;
+      gr->AddPoint(val, val + rnd.Uniform(-0.5, 0.5));
+      gr->SetPointError(i, 0., rnd.Uniform(0.25, 1.));
+   }
+
+   gr->SetPointError(4, 0., 0.5);
 
    gr->SetLineColor(kBlack);
    gr->SetLineWidth(2);
@@ -88,7 +93,7 @@ void Draw(const bool firstDraw)
 
    if (firstDraw)
    {
-      gPad->DrawFrame(0., 0., 6., 6.);
+      gPad->DrawFrame(0., 0., 5., 5.);
    }
 
    gr->Draw("SAME P");
