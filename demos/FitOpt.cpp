@@ -75,8 +75,6 @@ void FitOpt()
 
    fit->SetParameters(0., 0.);
 
-   //gr->Fit(fit, "RQN");
-
    grCurrentParPoint->AddPoint(0., 0.);
 
    Draw(true);
