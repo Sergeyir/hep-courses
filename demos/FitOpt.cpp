@@ -54,7 +54,7 @@ void FitOpt()
    gr->SetMarkerSize(1.5);
    gr->SetMarkerColor(kBlack);
 
-   fit->SetLineWidth(2);
+   fit->SetLineWidth(4);
    fit->SetLineColor(kRed - 3);
    fit->SetLineStyle(2);
 
