@@ -19,3 +19,4 @@ set use_syst False
 # number of events
 set nevents 10000
 # To do: see mg5_pp_jj_lo/Cards/run_card.dat to check whether lines above are all settins you need
+# (hint: you might want to look on p definition, drjj setting, and others)
